@@ -1,0 +1,53 @@
+name: Build and Publish to GitHub Packages
+
+on:
+  # Publish SNAPSHOT on every push to main
+  push:
+    branches: [ main ]
+
+  # Publish a release version when you create a GitHub Release
+  release:
+    types: [ published ]
+
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write   # Required to push to GitHub Packages
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 and configure Maven for GitHub Packages
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+          # server-id must match the <id> in pom.xml distributionManagement
+          server-id: github
+          server-username: GITHUB_ACTOR
+          server-password: GITHUB_TOKEN
+
+      # On a release event, strip -SNAPSHOT from the version before deploying.
+      # The release tag (e.g. "1.0.0") becomes the Maven artifact version.
+      - name: Set release version (release event only)
+        if: github.event_name == 'release'
+        run: |
+          RELEASE_VERSION=${{ github.event.release.tag_name }}
+          # Strip leading "v" if present (e.g. v1.0.0 → 1.0.0)
+          RELEASE_VERSION=${RELEASE_VERSION#v}
+          echo "Setting version to $RELEASE_VERSION"
+          mvn --batch-mode versions:set -DnewVersion=$RELEASE_VERSION -DgenerateBackupPoms=false
+
+      - name: Build and deploy
+        run: mvn --batch-mode deploy -DskipTests
+        env:
+          # GITHUB_TOKEN is automatically provided by GitHub Actions
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
