@@ -6,30 +6,34 @@
             This was previously drafted at HISP_India/globalproperties/addressConfiguration.xml but never
             wired into the actual content package - Initializer never picked it up, so the registration
             form's Address section was falling back to the RefApp default template.
-            All fields marked required per Habib's request (2026-07-24): "All address field should be mandatory".
+
+            2026-07-24: rewritten to exactly mirror addresshierarchy/addressConfiguration.xml. That file
+            only defines 4 hierarchy levels (COUNTRY, STATE_PROVINCE, COUNTY_DISTRICT, ADDRESS_1 - matching
+            the 4-column addresshierarchy.csv: Country > State > District > Sub-District/Taluka), each tied
+            to a specific PersonAddress property (country, stateProvince, countyDistrict, address1). This
+            template previously used address1-6 as generic free-text slots with its own labels, which
+            collided with those same property names and didn't line up with what the hierarchy module
+            actually constrains - e.g. address1 was labeled "House/Flat No." here but the hierarchy module
+            drives it as a Tehsil/Taluka dropdown, and stateProvince/countyDistrict had no field here at all
+            so their hierarchy dropdowns had nothing to attach to. Per Habib's request (2026-07-24), the
+            template now only exposes the 4 fields that are actually part of the hierarchy - no additional
+            free-text address fields (house number, street, village, PIN code) are captured at this time.
+            All 4 fields required, matching requiredInHierarchy=true on every level in addressConfiguration.xml.
         -->
         <globalProperty>
             <property>layout.address.format</property>
             <value>
                 &lt;org.openmrs.layout.address.AddressTemplate&gt;
                     &lt;nameMappings class=&quot;properties&quot;&gt;
-                        &lt;property name=&quot;address1&quot; value=&quot;House/Flat No., Building Name&quot;/&gt;
-                        &lt;property name=&quot;address2&quot; value=&quot;Street / Locality&quot;/&gt;
-                        &lt;property name=&quot;address3&quot; value=&quot;Village / Town&quot;/&gt;
-                        &lt;property name=&quot;address4&quot; value=&quot;Sub-District / Taluka&quot;/&gt;
-                        &lt;property name=&quot;address5&quot; value=&quot;District&quot;/&gt;
-                        &lt;property name=&quot;address6&quot; value=&quot;State&quot;/&gt;
-                        &lt;property name=&quot;postalCode&quot; value=&quot;PIN Code&quot;/&gt;
+                        &lt;property name=&quot;address1&quot; value=&quot;Sub-District / Taluka&quot;/&gt;
+                        &lt;property name=&quot;countyDistrict&quot; value=&quot;District&quot;/&gt;
+                        &lt;property name=&quot;stateProvince&quot; value=&quot;State&quot;/&gt;
                         &lt;property name=&quot;country&quot; value=&quot;Country&quot;/&gt;
                     &lt;/nameMappings&gt;
                     &lt;sizeMappings class=&quot;properties&quot;&gt;
                         &lt;property name=&quot;address1&quot; value=&quot;40&quot;/&gt;
-                        &lt;property name=&quot;address2&quot; value=&quot;40&quot;/&gt;
-                        &lt;property name=&quot;address3&quot; value=&quot;40&quot;/&gt;
-                        &lt;property name=&quot;address4&quot; value=&quot;40&quot;/&gt;
-                        &lt;property name=&quot;address5&quot; value=&quot;40&quot;/&gt;
-                        &lt;property name=&quot;address6&quot; value=&quot;40&quot;/&gt;
-                        &lt;property name=&quot;postalCode&quot; value=&quot;6&quot;/&gt;
+                        &lt;property name=&quot;countyDistrict&quot; value=&quot;40&quot;/&gt;
+                        &lt;property name=&quot;stateProvince&quot; value=&quot;40&quot;/&gt;
                         &lt;property name=&quot;country&quot; value=&quot;40&quot;/&gt;
                     &lt;/sizeMappings&gt;
                     &lt;elementDefaults class=&quot;properties&quot;&gt;
@@ -37,19 +41,13 @@
                     &lt;/elementDefaults&gt;
                     &lt;lineByLineFormat&gt;
                         &lt;string&gt;address1&lt;/string&gt;
-                        &lt;string&gt;address2&lt;/string&gt;
-                        &lt;string&gt;address3 address4&lt;/string&gt;
-                        &lt;string&gt;address5 address6 postalCode&lt;/string&gt;
+                        &lt;string&gt;countyDistrict stateProvince&lt;/string&gt;
                         &lt;string&gt;country&lt;/string&gt;
                     &lt;/lineByLineFormat&gt;
                     &lt;requiredElements&gt;
                         &lt;string&gt;address1&lt;/string&gt;
-                        &lt;string&gt;address2&lt;/string&gt;
-                        &lt;string&gt;address3&lt;/string&gt;
-                        &lt;string&gt;address4&lt;/string&gt;
-                        &lt;string&gt;address5&lt;/string&gt;
-                        &lt;string&gt;address6&lt;/string&gt;
-                        &lt;string&gt;postalCode&lt;/string&gt;
+                        &lt;string&gt;countyDistrict&lt;/string&gt;
+                        &lt;string&gt;stateProvince&lt;/string&gt;
                         &lt;string&gt;country&lt;/string&gt;
                     &lt;/requiredElements&gt;
                 &lt;/org.openmrs.layout.address.AddressTemplate&gt;
