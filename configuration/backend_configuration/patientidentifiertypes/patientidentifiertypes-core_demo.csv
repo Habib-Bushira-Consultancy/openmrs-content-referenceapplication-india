@@ -1,5 +1,4 @@
 Uuid,Void/Retire,Name,Description,Required,Format,Format description,Validator,Location behavior,Uniqueness behavior
-05a29f94-c0ed-11e2-94be-8c13b969e334,,OpenMRS ID,"OpenMRS patient identifier, with check-digit",TRUE,,,org.openmrs.module.idgen.validator.LuhnMod30IdentifierValidator,NOT_USED,UNIQUE
-22348099-3873-459e-a32e-d93b17eda533,,Legacy ID,Identifier type to record optional previous identifers ,FALSE,,,,NOT_USED,
-b4143563-16cd-4439-b288-f83d61670fc8,,ID Card,ID Card,FALSE,,,,NOT_USED,UNIQUE
-a71403f3-8584-4289-ab41-2b4e5570bd45,,SSN,Social Security Number,FALSE,^[A-Z]{1}-[0-9]{7}$,"Identifier must be exactly one uppercase letter, followed by a dash and exactly 7 digits. Example: A-0010902",,NOT_USED,UNIQUE
+05a29f94-c0ed-11e2-94be-8c13b969e334,,CR Number,"Case Registration Number (facility MRN, replaces OpenMRS ID as the primary patient identifier). Format target: FacilityPrefix/8-digit sequential; date segment deferred to hisp_india_core custom identifier source; interim = HISPI prefix + 8-digit sequential.",TRUE,,"HISPI + 8-digit sequential number (e.g. HISPI00000001). Prefix admin-editable in Manage Identifier Sources.",,NOT_USED,UNIQUE
+2bb0941e-801a-4017-8a97-10e41133d5a9,,Aadhaar Number,"Aadhaar number (UIDAI). Optional - not every patient has one, visible by default on the registration form.",FALSE,^[0-9]{12}$,"12-digit Aadhaar number, no spaces or dashes",,NOT_USED,UNIQUE
+66bfe386-cb6c-49b8-a854-5decc5768ece,,ABHA Number,"ABHA (Ayushman Bharat Health Account) number. Optional - hidden behind Configure identifiers overlay until ABDM integration is built.",FALSE,^[0-9]{2}-?[0-9]{4}-?[0-9]{4}-?[0-9]{4}$,"14-digit ABHA number, format XX-XXXX-XXXX-XXXX (dashes optional)",,NOT_USED,UNIQUE
