@@ -1,5 +1,5 @@
 Uuid,Void/Retire,Name,Description,Format,Foreign,Searchable
-14d4f066-15f5-102d-96e4-000c29c2a5d7,0,"Phone Number (+country code, 10 digits, e.g. +911234567890)",The telephone number for the person,java.lang.String,,,
+14d4f066-15f5-102d-96e4-000c29c2a5d7,,"Phone Number",The telephone number for the person,java.lang.String,,,
 8b56eac7-5c76-4b9c-8c6f-1deab8d3fc47,,Unknown patient,Used to flag patients that cannot be identified during the check-in process,java.lang.String,,,
 e82c1a65-a314-4182-b000-1df18cf6ca8e,,Occupation,"Patient's occupation",org.openmrs.Concept,fda0c07a-bdd8-4de7-8fbe-a31def9f49a9,false
 ffdc7615-c6e5-42bf-80fd-ae3a40d5369d,,Marital Status,"Patient's marital status",org.openmrs.Concept,413184f6-964d-43a7-80ba-4c2a7f31fcb4,false
