@@ -1,2 +1,2 @@
 Uuid,Void/Retire,Identifier type,Name,Description,Prefix,Suffix,First identifier base,Min length,Max length,Base character set,_version:1,_order:6000
-5124b736-66e0-46df-aa12-6d10549ed420,,CR Number,Generator for CR Number,"Sequential 8-digit generator for CR Number. Prefix HISPI = facility code for this pilot site; change in Manage Identifier Sources if a second facility is onboarded. Uses a dedicated source UUID (not the stock OpenMRS ID generator) so the sequence counter starts clean at 1 and isn't advanced by reference-app demo data.",HISPI,,1,8,13,0123456789,,
+8549f706-7e85-4c1d-9424-217d50a2988b,,CR Number,Generator for CR Number,Generator for CR Number,HISPI,,00000001,8,13,0123456789,,
