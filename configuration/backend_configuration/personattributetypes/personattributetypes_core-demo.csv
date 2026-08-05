@@ -1,8 +1,11 @@
 Uuid,Void/Retire,Name,Description,Format,Foreign,Searchable
-14d4f066-15f5-102d-96e4-000c29c2a5d7,,"Phone Number",The telephone number for the person,java.lang.String,,,
+14d4f066-15f5-102d-96e4-000c29c2a5d7,,Phone Number,The telephone number for the person,java.lang.String,,,
 8b56eac7-5c76-4b9c-8c6f-1deab8d3fc47,,Unknown patient,Used to flag patients that cannot be identified during the check-in process,java.lang.String,,,
-e82c1a65-a314-4182-b000-1df18cf6ca8e,,Occupation,"Patient's occupation",org.openmrs.Concept,fda0c07a-bdd8-4de7-8fbe-a31def9f49a9,false
-ffdc7615-c6e5-42bf-80fd-ae3a40d5369d,,Marital Status,"Patient's marital status",org.openmrs.Concept,413184f6-964d-43a7-80ba-4c2a7f31fcb4,false
-cab274dc-44c5-42fc-a314-10ed74ed1379,,Nationality,"Patient's nationality",org.openmrs.Concept,7b2c8e37-bc05-4ca5-a20d-bc7cb75046bc,false
-dad59228-5881-4a51-b30e-75b885e2c41a,,Patient Category,"Category used for fee eligibility (e.g. BPL, Ayushman Bharat, General)",org.openmrs.Concept,7486228b-2618-4708-97a1-9779191884cb,false
-8438b483-8732-42b1-b660-e4ad70f12f77,,Next of Kin Name,"Name of patient's next of kin / relative",java.lang.String,,false
+e82c1a65-a314-4182-b000-1df18cf6ca8e,,Occupation,Patient's occupation,org.openmrs.Concept,fda0c07a-bdd8-4de7-8fbe-a31def9f49a9,false
+ffdc7615-c6e5-42bf-80fd-ae3a40d5369d,,Marital Status,Patient's marital status,org.openmrs.Concept,413184f6-964d-43a7-80ba-4c2a7f31fcb4,false
+cab274dc-44c5-42fc-a314-10ed74ed1379,,Nationality,Patient's nationality,org.openmrs.Concept,7b2c8e37-bc05-4ca5-a20d-bc7cb75046bc,false
+8438b483-8732-42b1-b660-e4ad70f12f77,,Next of Kin Name,Name of patient's next of kin / relative,java.lang.String,,false
+624e0fa4-bfce-4321-bb84-3185be56dec3,,ABHA Verified,"Whether this patient's demographics were KYC-verified against their ABHA. Set by hisp_india_core from a server-side verification draft only - never accepted from a client payload, since the D9 field lock is built on it. Cleared by an audited override.",java.lang.Boolean,,false
+77fdba61-8625-49af-ba2d-87cf3c05b4b8,,ABHA Verification Mode,"How the ABHA was verified: AADHAAR_OTP, MOBILE_OTP or DEMOGRAPHIC. Different modes carry different confidence.",java.lang.String,,false
+3dea9458-ef6f-4fd6-b1e3-3029426ac0e5,,ABHA Verified On,Timestamp of the ABHA verification that produced the current demographics.,java.util.Date,,false
+27178c45-a2ac-4bcb-903c-7e531f30aa4b,,ABHA Verified Demographics,Canonical fingerprint (given|middle|family|gender|yyyy-MM-dd) of the demographics as verified against ABHA. Read and written only by AbhaDemographicsFingerprint. Exists because an old-vs-new comparison inside a save advice cannot work - Hibernate hands the advice the already-mutated instance - so the invariant is recorded at verification time instead. Voided when an authorised override changes the demographics.,java.lang.String,,false
