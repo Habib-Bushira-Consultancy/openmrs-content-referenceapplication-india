@@ -16,32 +16,55 @@
             actually constrains - e.g. address1 was labeled "House/Flat No." here but the hierarchy module
             drives it as a Tehsil/Taluka dropdown, and stateProvince/countyDistrict had no field here at all
             so their hierarchy dropdowns had nothing to attach to. Per Habib's request (2026-07-24), the
-            template now only exposes the 4 fields that are actually part of the hierarchy - no additional
-            free-text address fields (house number, street, village, PIN code) are captured at this time.
-            All 4 fields required, matching requiredInHierarchy=true on every level in addressConfiguration.xml.
+            template now only exposes the 4 fields that are actually part of the hierarchy.
+
+            2026-08-09: two free-text fields added at the client's request - address2 ("Street Address")
+            and postalCode ("PIN Code").
+
+            These are deliberately NOT added to addresshierarchy/addressConfiguration.xml, and that
+            omission is the whole mechanism rather than an oversight. A field listed there is driven by
+            the hierarchy: it is constrained to the values in addresshierarchy.csv and is filled in by
+            the quick search. A field named here but absent there is captured as free text, typed by the
+            clerk. A street name and a PIN code cannot come from a 4-level Country > State > District >
+            Sub-District hierarchy, so they must stay out of it. Adding them there later would silently
+            turn both boxes into dropdowns with no values to offer.
+
+            Both are optional: requiredElements is unchanged. A patient who does not know their PIN code
+            must still be registrable, and blocking registration on it would send a clerk hunting for a
+            number or inventing one. Move either &lt;string&gt; into requiredElements to change that -
+            no code change is involved.
+
+            The hierarchy's own 4 fields remain required, matching requiredInHierarchy=true on every
+            level in addressConfiguration.xml.
         -->
         <globalProperty>
             <property>layout.address.format</property>
             <value>
                 &lt;org.openmrs.layout.address.AddressTemplate&gt;
                     &lt;nameMappings class=&quot;properties&quot;&gt;
+                        &lt;property name=&quot;address2&quot; value=&quot;Street Address&quot;/&gt;
                         &lt;property name=&quot;address1&quot; value=&quot;Sub-District / Taluka&quot;/&gt;
                         &lt;property name=&quot;countyDistrict&quot; value=&quot;District&quot;/&gt;
                         &lt;property name=&quot;stateProvince&quot; value=&quot;State&quot;/&gt;
                         &lt;property name=&quot;country&quot; value=&quot;Country&quot;/&gt;
+                        &lt;property name=&quot;postalCode&quot; value=&quot;PIN Code&quot;/&gt;
                     &lt;/nameMappings&gt;
                     &lt;sizeMappings class=&quot;properties&quot;&gt;
+                        &lt;property name=&quot;address2&quot; value=&quot;80&quot;/&gt;
                         &lt;property name=&quot;address1&quot; value=&quot;40&quot;/&gt;
                         &lt;property name=&quot;countyDistrict&quot; value=&quot;40&quot;/&gt;
                         &lt;property name=&quot;stateProvince&quot; value=&quot;40&quot;/&gt;
                         &lt;property name=&quot;country&quot; value=&quot;40&quot;/&gt;
+                        &lt;property name=&quot;postalCode&quot; value=&quot;6&quot;/&gt;
                     &lt;/sizeMappings&gt;
                     &lt;elementDefaults class=&quot;properties&quot;&gt;
                         &lt;property name=&quot;country&quot; value=&quot;India&quot;/&gt;
                     &lt;/elementDefaults&gt;
                     &lt;lineByLineFormat&gt;
+                        &lt;string&gt;address2&lt;/string&gt;
                         &lt;string&gt;address1&lt;/string&gt;
                         &lt;string&gt;countyDistrict stateProvince&lt;/string&gt;
+                        &lt;string&gt;postalCode&lt;/string&gt;
                         &lt;string&gt;country&lt;/string&gt;
                     &lt;/lineByLineFormat&gt;
                     &lt;requiredElements&gt;
