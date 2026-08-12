@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <globalProperties>
+
+        <!--
+            Registration settings owned by the hispindia-core backend module.
+
+            These are global properties rather than frontend configuration on purpose. Both the
+            registration page and the revisit endpoint need the same answers, and a value duplicated
+            into config-core_demo.json would give an administrator two places to set one thing with
+            no signal about which one won. The frontend schema deliberately has no `registrationObs`
+            block and leaves `visit.visitTypeUuid` empty so that these remain the single source.
+        -->
+
+        <globalProperty>
+            <property>hispindia.registration.defaultVisitTypeUuid</property>
+            <value>287463d3-2233-4c69-9851-5841a1f5e109</value>
+            <description>
+                OPD Visit. The visit opened at registration when the request does not name one, and
+                the fallback used by the revisit endpoint.
+
+                This must be set for arrival facts to work at all: referral, MLC and patient
+                category are stored against the visit, so with no visit there is nowhere to put
+                them. Registration refuses rather than dropping them silently.
+            </description>
+        </globalProperty>
+
+        <globalProperty>
+            <property>hispindia.registration.encounterTypeUuid</property>
+            <value>6c816b60-03c3-4555-87c0-d2570712269d</value>
+            <description>
+                Registration encounter type, carrying each arrival's referral and MLC answers as obs.
+                One encounter per arrival (§9.7), not one per patient.
+            </description>
+        </globalProperty>
+
+        <globalProperty>
+            <property>hispindia.registration.carryForwardVisitAttributeTypeUuids</property>
+            <value>77679762-856a-4e31-bfe2-4f3eec644dc0</value>
+            <description>
+                Patient Category. Comma-separated visit attribute type uuids whose value carries
+                forward from a patient's most recent visit, used by the revisit screen's prefill.
+
+                Category carries because it stays true between arrivals — a BPL patient is still BPL
+                next month — so the clerk accepts it with one keystroke rather than retyping it.
+                Nothing else is listed: a payment method last time says nothing about today, and
+                referral and MLC cannot appear here at all because they are obs rather than
+                attributes, precisely so an MLC flag can never land on an arrival it was never true
+                of.
+
+                This replaced hispindia.registration.patientCategoryAttributeTypeName. Visit
+                attributes now reach the server keyed by their own type uuid, so it no longer has to
+                be told which type the category lives on — the registration page and the stock
+                dashboard visit form both name it, and the server writing whichever type it was sent
+                is what keeps those two entry points on the same row (D16).
+            </description>
+        </globalProperty>
+
+    </globalProperties>
+</config>
