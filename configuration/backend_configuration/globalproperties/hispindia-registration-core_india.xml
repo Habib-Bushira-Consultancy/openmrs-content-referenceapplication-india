@@ -7,7 +7,7 @@
 
             These are global properties rather than frontend configuration on purpose. Both the
             registration page and the revisit endpoint need the same answers, and a value duplicated
-            into config-core_demo.json would give an administrator two places to set one thing with
+            into config-core_india.json would give an administrator two places to set one thing with
             no signal about which one won. The frontend schema deliberately has no `registrationObs`
             block and leaves `visit.visitTypeUuid` empty so that these remain the single source.
         -->

@@ -12,12 +12,24 @@
 				<include>content.properties</include>
 			</includes>
 			<outputDirectory>/</outputDirectory>
+			<fileMode>0644</fileMode>
 		</fileSet>
 		<fileSet>
 			<directory>${project.basedir}/configuration</directory>
 			<includes>
 				<include>**/*</include>
 			</includes>
+			<!--
+				Force a standard, world-readable mode on everything in the packaged zip, regardless
+				of what permissions the source files happen to have on whoever's machine builds this.
+				Without this, a config file that was last written with a restrictive mode (e.g. 600)
+				carries that mode all the way through into the assembled distro, and the reference
+				application's runtime container -- which reads this tree at startup as a non-root
+				user after the (root) image-build step unpacked it -- fails with a plain
+				"Permission denied" that has nothing to do with anything actually wrong in the file.
+			-->
+			<fileMode>0644</fileMode>
+			<directoryMode>0755</directoryMode>
 		</fileSet>
 	</fileSets>
 </assembly>
