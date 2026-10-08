@@ -6,10 +6,10 @@
         </globalProperty>
         <!-- Queue Configuration -->
 
-        <!-- https://app.openconceptlab.org/#/orgs/openmrs/sources/DemoQueueConcepts/concepts/DemoQueue-Service/ -->
+        <!-- https://app.openconceptlab.org/#/orgs/HISP/sources/HISPIndia-Queue-Concepts/ -->
         <globalProperty>
             <property>queue.serviceConceptSetName</property>
-            <value>a8f3f64a-11d5-4a09-b0fb-c8118fa349f3</value>
+            <value>665eb034-e055-44ba-b506-40529eadaab0</value>
         </globalProperty>
 
         <!-- https://app.openconceptlab.org/#/orgs/openmrs/sources/DemoQueueConcepts/concepts/DemoQueue-Priority/ -->
