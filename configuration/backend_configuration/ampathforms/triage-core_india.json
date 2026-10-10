@@ -1,0 +1,244 @@
+{
+  "name": "Triage",
+  "description": "Triage: biometrics and vital signs (replaces the stock vitals and biometrics form)",
+  "version": "1",
+  "published": true,
+  "retired": false,
+  "encounter": "Vitals",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Triage",
+      "sections": [
+        {
+          "label": "Biometrics",
+          "isExpanded": true,
+          "questions": [
+            {
+              "id": "weight",
+              "label": "Weight (kg)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "min": "0",
+                "max": "250",
+                "step": 0.1
+              }
+            },
+            {
+              "id": "height",
+              "label": "Height (cm)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "min": "10",
+                "max": "272",
+                "step": 0.1
+              }
+            },
+            {
+              "id": "bmi",
+              "label": "BMI (kg/m²)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "disallowDecimals": false,
+                "calculate": {
+                  "calculateExpression": "calcBMI(height, weight)"
+                }
+              },
+              "behaviours": [
+                {
+                  "intent": "*",
+                  "readonly": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Vital signs",
+          "isExpanded": true,
+          "questions": [
+            {
+              "id": "respiratoryRate",
+              "label": "Respiration per min",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5242AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "min": "0",
+                "max": "100",
+                "disallowDecimals": true
+              }
+            },
+            {
+              "id": "temperature",
+              "label": "Temperature (°F)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9b051f3c-34c4-5f78-9e27-88c9f4bbb136",
+                "min": "77",
+                "max": "116.6",
+                "step": 0.1
+              }
+            },
+            {
+              "id": "temperatureLocation",
+              "label": "Temperature location",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "55c4e75f-8c9a-503b-b389-6b65519e98d3",
+                "answers": [
+                  {
+                    "concept": "66cea7fe-54f9-5a58-aa18-c63553ee990e",
+                    "label": "Oral"
+                  },
+                  {
+                    "concept": "73eac328-ed1c-5041-aa8a-dde3ae19c8f2",
+                    "label": "Rectal"
+                  },
+                  {
+                    "concept": "fb0e4da8-a256-5200-97fa-ec324e0e407f",
+                    "label": "Armpit"
+                  },
+                  {
+                    "concept": "d83504c2-c582-5933-8702-4e18b287d3e0",
+                    "label": "By skin"
+                  },
+                  {
+                    "concept": "4d49db88-9673-544b-8871-e9c5ff171bed",
+                    "label": "By ear"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(temperature)"
+              }
+            },
+            {
+              "id": "pulse",
+              "label": "Pulse per min",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5087AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "min": "0",
+                "max": "230",
+                "disallowDecimals": true
+              }
+            },
+            {
+              "id": "systolicBp",
+              "label": "Systolic blood pressure (mmHg)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5085AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "min": "0",
+                "max": "250",
+                "disallowDecimals": true
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(diastolicBp) && myValue < diastolicBp",
+                  "message": "Systolic cannot be less than diastolic"
+                }
+              ]
+            },
+            {
+              "id": "diastolicBp",
+              "label": "Diastolic blood pressure (mmHg)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5086AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "min": "0",
+                "max": "150",
+                "disallowDecimals": true
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(systolicBp) && myValue > systolicBp",
+                  "message": "Systolic cannot be less than diastolic"
+                }
+              ]
+            },
+            {
+              "id": "bpPosition",
+              "label": "Blood pressure position",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "da8bd121-4626-5f46-b293-fd9550fc24e7",
+                "answers": [
+                  {
+                    "concept": "81bcc7af-4381-5dd7-a1f9-18f15168e64b",
+                    "label": "Sitting"
+                  },
+                  {
+                    "concept": "ce659a55-9dce-5456-9022-2ed15da08903",
+                    "label": "Lying down"
+                  },
+                  {
+                    "concept": "822df53b-5073-55fe-a495-acedb8d795b9",
+                    "label": "Standing"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(systolicBp) && isEmpty(diastolicBp)"
+              }
+            },
+            {
+              "id": "bpSource",
+              "label": "Blood pressure source",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e56814b1-2974-539f-9c41-fc2cd2bb9172",
+                "answers": [
+                  {
+                    "concept": "94c7e018-ef1c-52eb-918a-3ba195503b05",
+                    "label": "Left arm"
+                  },
+                  {
+                    "concept": "782e341b-e6a1-58ce-bcbb-80192b9ad2bd",
+                    "label": "Right arm"
+                  },
+                  {
+                    "concept": "750572fa-c2c7-51df-aaa0-10b6f4902f21",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(systolicBp) && isEmpty(diastolicBp)"
+              }
+            },
+            {
+              "id": "oxygenSaturation",
+              "label": "O2 saturation (%)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5092AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "min": "0",
+                "max": "100",
+                "step": 0.1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "referencedForms": []
+}
