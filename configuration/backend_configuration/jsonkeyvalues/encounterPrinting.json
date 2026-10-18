@@ -12,7 +12,7 @@
     "report.encounterPrinting.header.personAttributeTypes": "Patient Category",
     "report.encounterPrinting.header.visitAttributes": "false",
     "report.encounterPrinting.header.visitAttributeTypes": "",
-    "report.encounterPrinting.footer.customText": "",
+    "report.encounterPrinting.footer.customText": "HISP India EMR | Confidential medical record",
     "report.encounterPrinting.stylesheetPath": "printing/defaultEncounterFormFopStylesheet.xsl",
-    "report.encounterPrinting.logopath": ""
+    "report.encounterPrinting.logopath": "configuration/printing/referenceapplication-india/hispindia-logo.png"
 }

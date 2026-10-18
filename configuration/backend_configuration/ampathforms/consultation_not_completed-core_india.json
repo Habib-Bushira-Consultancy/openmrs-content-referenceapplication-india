@@ -1,0 +1,92 @@
+{
+  "name": "Consultation Not Completed",
+  "description": "Record that a patient was not available (did not respond to calls or left) or that a consultation was cancelled, with a reason",
+  "version": "1",
+  "published": true,
+  "retired": false,
+  "encounter": "Consultation Not Completed",
+  "processor": "EncounterFormProcessor",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Consultation not completed",
+      "sections": [
+        {
+          "label": "Outcome and reason",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "outcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": true,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9b4f013e-2913-5ddd-a035-3fe668870ffc",
+                "answers": [
+                  {
+                    "concept": "c3ed9ff5-6a9f-584e-9c03-3ab8c0ff7d12",
+                    "label": "Patient not available"
+                  },
+                  {
+                    "concept": "6a2f66a6-630b-59e6-b8d7-fbd22978a946",
+                    "label": "Consultation cancelled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "reason",
+              "label": "Reason",
+              "type": "obs",
+              "required": true,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0283ed31-418b-519a-8110-3ff51764b1ab",
+                "answers": [
+                  {
+                    "concept": "86f9dfe9-cdc2-5240-93c3-f57b20443b99",
+                    "label": "Did not respond to calls"
+                  },
+                  {
+                    "concept": "30e01cad-0fed-5554-8f76-67e31d8b6861",
+                    "label": "Left without being seen"
+                  },
+                  {
+                    "concept": "d986f983-7772-56b2-a208-70e0a0b3dcba",
+                    "label": "Cancelled at patient's request"
+                  },
+                  {
+                    "concept": "f9cffe4b-2fdd-58ef-a8ef-f4330cc3f809",
+                    "label": "Doctor unavailable"
+                  },
+                  {
+                    "concept": "d020a9ac-d019-5a7e-938b-579ab89cb721",
+                    "label": "Other reason for cancellation"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "note",
+              "label": "Note",
+              "type": "obs",
+              "required": {
+                "type": "conditionalRequired",
+                "referenceQuestionId": "reason",
+                "referenceQuestionAnswers": [
+                  "d020a9ac-d019-5a7e-938b-579ab89cb721"
+                ],
+                "message": "Please add a note when the reason is Other"
+              },
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "560aed99-ba91-51a2-9eaa-3813fa599b4f"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

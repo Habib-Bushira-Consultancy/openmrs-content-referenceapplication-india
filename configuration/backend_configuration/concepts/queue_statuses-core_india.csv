@@ -1,0 +1,12 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Description:en,Data class,Data type,Answers,Members,_version:1,_order:1000
+c3ed9ff5-6a9f-584e-9c03-3ab8c0ff7d12,,,Patient Not Available,Patient Not Available,Queue status and consultation outcome: patient did not respond to calls or left before the consultation,Misc,N/A,,,,
+6a2f66a6-630b-59e6-b8d7-fbd22978a946,,,Consultation Cancelled,Consultation Cancelled,Queue status and consultation outcome: consultation was cancelled before it took place,Misc,N/A,,,,
+86f9dfe9-cdc2-5240-93c3-f57b20443b99,,,Did not respond to calls,Did not respond to calls,Reason a consultation was not completed,Misc,N/A,,,,
+30e01cad-0fed-5554-8f76-67e31d8b6861,,,Left without being seen,Left without being seen,Reason a consultation was not completed,Misc,N/A,,,,
+d986f983-7772-56b2-a208-70e0a0b3dcba,,,Cancelled at patient's request,Cancelled at patient's request,Reason a consultation was not completed,Misc,N/A,,,,
+f9cffe4b-2fdd-58ef-a8ef-f4330cc3f809,,,Doctor unavailable,Doctor unavailable,Reason a consultation was not completed,Misc,N/A,,,,
+d020a9ac-d019-5a7e-938b-579ab89cb721,,,Other reason for cancellation,Other reason for cancellation,Reason a consultation was not completed,Misc,N/A,,,,
+9b4f013e-2913-5ddd-a035-3fe668870ffc,,,Consultation not completed outcome,Consultation not completed outcome,Whether the patient was not available or the consultation was cancelled,Question,Coded,c3ed9ff5-6a9f-584e-9c03-3ab8c0ff7d12;6a2f66a6-630b-59e6-b8d7-fbd22978a946,,,
+0283ed31-418b-519a-8110-3ff51764b1ab,,,Consultation not completed reason,Consultation not completed reason,Reason the consultation was not completed,Question,Coded,86f9dfe9-cdc2-5240-93c3-f57b20443b99;30e01cad-0fed-5554-8f76-67e31d8b6861;d986f983-7772-56b2-a208-70e0a0b3dcba;f9cffe4b-2fdd-58ef-a8ef-f4330cc3f809;d020a9ac-d019-5a7e-938b-579ab89cb721,,,
+560aed99-ba91-51a2-9eaa-3813fa599b4f,,,Consultation not completed note,Consultation not completed note,Free-text note about why the consultation was not completed,Question,Text,,,,
+f270a532-91d2-5d23-b58c-ce157cd4dbca,,,HISP India Queue Status,HISP India Queue Status,"Statuses available to queue entries: Waiting, In Service, Finished Service, Patient Not Available, Consultation Cancelled",ConvSet,N/A,,51ae5e4d-b72b-4912-bf31-a17efb690aeb;ca7494ae-437f-4fd0-8aae-b88b9a2ba47d;b559fb77-4e1e-4285-b9b7-1d03e0ba983f;c3ed9ff5-6a9f-584e-9c03-3ab8c0ff7d12;6a2f66a6-630b-59e6-b8d7-fbd22978a946,,

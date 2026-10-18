@@ -18,10 +18,10 @@
             <value>78063dec-b6d8-40c1-9483-dd4d3c3ca434</value>
         </globalProperty>
 
-        <!-- https://app.openconceptlab.org/#/orgs/openmrs/sources/DemoQueueConcepts/concepts/DemoQueue-Status/ -->
+        <!-- HISP India status set: Waiting, In Service, Finished Service, Patient Not Available, Consultation Cancelled (concepts/queue_statuses-core_india.csv) -->
         <globalProperty>
             <property>queue.statusConceptSetName</property>
-            <value>d60ffa60-fca6-4c60-aea9-a79469ae65c7</value>
+            <value>f270a532-91d2-5d23-b58c-ce157cd4dbca</value>
         </globalProperty>
 
         <!-- This requires that the sort weight for priority concepts be maintained in order of least to most urgent -->

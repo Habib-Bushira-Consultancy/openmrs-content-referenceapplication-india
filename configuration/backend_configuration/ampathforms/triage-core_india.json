@@ -15,6 +15,43 @@
           "isExpanded": true,
           "questions": [
             {
+              "id": "weightUnit",
+              "label": "Weight unit",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "content-switcher",
+                "concept": "2e68dc90-e8e1-5e9d-acca-2f962b618d27",
+                "isTransient": true,
+                "defaultValue": "d02099d6-7b9a-509d-a2cb-7684860a2918",
+                "answers": [
+                  {
+                    "concept": "d02099d6-7b9a-509d-a2cb-7684860a2918",
+                    "label": "kg"
+                  },
+                  {
+                    "concept": "c841419d-07ca-5468-9cd7-5f10ebf3bb98",
+                    "label": "lb"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "weightLb",
+              "label": "Weight (lb)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "fce70636-d40f-52aa-b7ea-92e57fa6fef3",
+                "isTransient": true,
+                "min": "0",
+                "max": "551",
+                "step": 0.1
+              },
+              "hide": {
+                "hideWhenExpression": "weightUnit != 'c841419d-07ca-5468-9cd7-5f10ebf3bb98'"
+              }
+            },
+            {
               "id": "weight",
               "label": "Weight (kg)",
               "type": "obs",
@@ -23,7 +60,48 @@
                 "concept": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "min": "0",
                 "max": "250",
+                "step": 0.1,
+                "calculate": {
+                  "calculateExpression": "weightUnit == 'c841419d-07ca-5468-9cd7-5f10ebf3bb98' && !isEmpty(weightLb) ? Math.round(weightLb * 0.45359237 * 10) / 10 : weight"
+                }
+              },
+              "readonly": "weightUnit == 'c841419d-07ca-5468-9cd7-5f10ebf3bb98'"
+            },
+            {
+              "id": "heightUnit",
+              "label": "Height unit",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "content-switcher",
+                "concept": "4d1daa12-a00b-5114-bdec-746fa06a2139",
+                "isTransient": true,
+                "defaultValue": "37738564-0b3f-50d2-877c-1ef5daa6edbb",
+                "answers": [
+                  {
+                    "concept": "37738564-0b3f-50d2-877c-1ef5daa6edbb",
+                    "label": "cm"
+                  },
+                  {
+                    "concept": "13724702-f178-5db2-8a5f-23862e4ab93f",
+                    "label": "inch"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "heightIn",
+              "label": "Height (inch)",
+              "type": "obs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "ddd0fae5-2b9a-5399-bc34-eda5b32a27cd",
+                "isTransient": true,
+                "min": "4",
+                "max": "107",
                 "step": 0.1
+              },
+              "hide": {
+                "hideWhenExpression": "heightUnit != '13724702-f178-5db2-8a5f-23862e4ab93f'"
               }
             },
             {
@@ -35,8 +113,12 @@
                 "concept": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "min": "10",
                 "max": "272",
-                "step": 0.1
-              }
+                "step": 0.1,
+                "calculate": {
+                  "calculateExpression": "heightUnit == '13724702-f178-5db2-8a5f-23862e4ab93f' && !isEmpty(heightIn) ? Math.round(heightIn * 2.54 * 10) / 10 : height"
+                }
+              },
+              "readonly": "heightUnit == '13724702-f178-5db2-8a5f-23862e4ab93f'"
             },
             {
               "id": "bmi",
@@ -47,7 +129,7 @@
                 "concept": "1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "disallowDecimals": false,
                 "calculate": {
-                  "calculateExpression": "calcBMI(height, weight)"
+                  "calculateExpression": "calcBMI(heightUnit == '13724702-f178-5db2-8a5f-23862e4ab93f' && !isEmpty(heightIn) ? Math.round(heightIn * 2.54 * 10) / 10 : height, weightUnit == 'c841419d-07ca-5468-9cd7-5f10ebf3bb98' && !isEmpty(weightLb) ? Math.round(weightLb * 0.45359237 * 10) / 10 : weight)"
                 }
               },
               "behaviours": [
