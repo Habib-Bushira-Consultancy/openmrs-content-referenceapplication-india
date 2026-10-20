@@ -2,7 +2,7 @@
   "name": "Triage",
   "description": "Triage: biometrics and vital signs (replaces the stock vitals and biometrics form)",
   "version": "1",
-  "published": true,
+  "published": false,
   "retired": false,
   "encounter": "Vitals",
   "processor": "EncounterFormProcessor",
