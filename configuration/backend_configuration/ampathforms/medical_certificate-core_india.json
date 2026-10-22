@@ -1,0 +1,227 @@
+{
+  "name": "Medical Certificate",
+  "description": "Medical certificates (IMC Regulations 2002, Appendix 2): sickness/rest, fitness, travel, attendance and others",
+  "version": "1",
+  "published": false,
+  "retired": false,
+  "encounter": "Medical Certificate",
+  "processor": "EncounterFormProcessor",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Medical certificate",
+      "sections": [
+        {
+          "label": "Certificate",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Certificate type",
+              "type": "obs",
+              "id": "certificateType",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "32fc5666-4cfd-5521-ab3b-fa9bc8d7c955",
+                "answers": [
+                  {
+                    "concept": "06b63639-ee95-5129-91bf-e6298f73fd1a",
+                    "label": "Sickness and rest"
+                  },
+                  {
+                    "concept": "49c3c1d1-cb98-587a-8cdd-4b9bb50fe440",
+                    "label": "Fitness to resume duty"
+                  },
+                  {
+                    "concept": "04c7a58c-37a2-5c17-9880-e332727cd206",
+                    "label": "Fitness to travel"
+                  },
+                  {
+                    "concept": "f8628ac0-7fd1-5d09-ac79-44c6086f8480",
+                    "label": "OPD attendance"
+                  },
+                  {
+                    "concept": "e9846630-1be7-50da-82bb-47d6d8d055b7",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "required": true
+            },
+            {
+              "label": "Suffering from (nature of illness)",
+              "type": "obs",
+              "id": "illness",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "70c9a30c-0f03-50b7-9e32-c3d96c4f29af",
+                "rows": 2
+              },
+              "hide": {
+                "hideWhenExpression": "certificateType !== '06b63639-ee95-5129-91bf-e6298f73fd1a' && certificateType !== '49c3c1d1-cb98-587a-8cdd-4b9bb50fe440'"
+              }
+            },
+            {
+              "label": "Show diagnosis on the certificate",
+              "type": "obs",
+              "id": "showDiagnosis",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3f833b34-3b25-5abc-a268-b57cae9efd6f",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "required": true
+            }
+          ]
+        },
+        {
+          "label": "Rest advised",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Absence from duty with effect from",
+              "type": "obs",
+              "id": "restFrom",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "2e510239-663b-5ec1-b8ce-d52344b9316a"
+              },
+              "hide": {
+                "hideWhenExpression": "certificateType !== '06b63639-ee95-5129-91bf-e6298f73fd1a'"
+              }
+            },
+            {
+              "label": "Period of absence (days)",
+              "type": "obs",
+              "id": "restDays",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a03891a8-18d4-5887-a4d4-b36334802407",
+                "min": "1"
+              },
+              "hide": {
+                "hideWhenExpression": "certificateType !== '06b63639-ee95-5129-91bf-e6298f73fd1a'"
+              }
+            },
+            {
+              "label": "Up to and including",
+              "type": "obs",
+              "id": "restTo",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "2129dfde-81c1-5140-bf64-2e17154d3337",
+                "calculate": {
+                  "calculateExpression": "!isEmpty(restFrom) && !isEmpty(restDays) ? addDaysToDate(restFrom, restDays - 1) : restTo"
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "certificateType !== '06b63639-ee95-5129-91bf-e6298f73fd1a'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fitness",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Fit to resume duty from",
+              "type": "obs",
+              "id": "fitFrom",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "cdc2f8b3-e798-508b-90ce-2c1bf19e6c2d"
+              },
+              "hide": {
+                "hideWhenExpression": "certificateType !== '49c3c1d1-cb98-587a-8cdd-4b9bb50fe440'"
+              }
+            },
+            {
+              "label": "Restrictions or light duties",
+              "type": "obs",
+              "id": "restrictions",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "1dfd5209-03c1-5476-94a9-bc62fe7ed3a0",
+                "rows": 2
+              },
+              "hide": {
+                "hideWhenExpression": "certificateType !== '49c3c1d1-cb98-587a-8cdd-4b9bb50fe440'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Purpose or details",
+              "type": "obs",
+              "id": "purpose",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "d5e3a638-6bd3-515c-8fb1-b45125296754",
+                "rows": 2
+              },
+              "hide": {
+                "hideWhenExpression": "!['04c7a58c-37a2-5c17-9880-e332727cd206','f8628ac0-7fd1-5d09-ac79-44c6086f8480','e9846630-1be7-50da-82bb-47d6d8d055b7'].includes(certificateType)"
+              }
+            },
+            {
+              "label": "Identification mark 1",
+              "type": "obs",
+              "id": "idMark1",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ed3d0b46-b5bc-5ab8-b792-54e25cb5714f"
+              },
+              "hide": {
+                "hideWhenExpression": "certificateType !== '06b63639-ee95-5129-91bf-e6298f73fd1a' && certificateType !== '49c3c1d1-cb98-587a-8cdd-4b9bb50fe440'"
+              }
+            },
+            {
+              "label": "Identification mark 2",
+              "type": "obs",
+              "id": "idMark2",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "39891486-9fdb-5deb-bd48-8a93085efa90"
+              },
+              "hide": {
+                "hideWhenExpression": "certificateType !== '06b63639-ee95-5129-91bf-e6298f73fd1a' && certificateType !== '49c3c1d1-cb98-587a-8cdd-4b9bb50fe440'"
+              }
+            },
+            {
+              "label": "Remarks",
+              "type": "obs",
+              "id": "remarks",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "502a49da-33ce-5e92-8241-99872a2a86aa",
+                "rows": 2
+              }
+            },
+            {
+              "label": "Replaces earlier certificate (reference)",
+              "type": "obs",
+              "id": "replaces",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "8ae4973f-a502-50da-a915-d291cf46464c"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

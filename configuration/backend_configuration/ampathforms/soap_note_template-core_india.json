@@ -2,7 +2,7 @@
   "name": "SOAP Note Template",
   "description": "SOAP Note Form Template",
   "version": "1",
-  "published": true,
+  "published": false,
   "retired": false,
   "encounter": "Visit Note",
   "pages": [

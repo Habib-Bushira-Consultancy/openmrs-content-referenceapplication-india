@@ -1,0 +1,747 @@
+{
+  "name": "Medico-Legal Case Record",
+  "description": "Medico-legal case documentation: incident, history, identification, injuries, samples, opinion and police intimation",
+  "version": "1",
+  "published": true,
+  "retired": false,
+  "encounter": "Medico-Legal Case",
+  "processor": "EncounterFormProcessor",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Medico-legal case",
+      "sections": [
+        {
+          "label": "MLC classification",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "mlcIntro",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Use for every visit flagged as MLC at registration or by the doctor. Vitals are in **Triage**; general and systemic examination in **History and Examination**."
+              ]
+            },
+            {
+              "label": "MLC type at registration",
+              "type": "obs",
+              "id": "mlcTypeAtRegistration",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "b919c235-66be-4de3-9dec-20a699fe67ba",
+                "answers": [
+                  {
+                    "concept": "17a16669-c79b-4076-af86-99669063cfdc",
+                    "label": "Burns"
+                  },
+                  {
+                    "concept": "27a65612-fa16-4fe7-9534-0e6d36b85d68",
+                    "label": "Rape"
+                  },
+                  {
+                    "concept": "4a4786c1-fb3c-4083-8266-6f8c2c880359",
+                    "label": "Accidental fall"
+                  },
+                  {
+                    "concept": "e20e9235-5ffe-4d16-8cd5-2a25fd5a2525",
+                    "label": "Poisoning"
+                  },
+                  {
+                    "concept": "93fc0d9f-10cd-40b1-997d-08ba8aef0f2a",
+                    "label": "Railway accident"
+                  },
+                  {
+                    "concept": "eedd135c-03ea-482c-bcb1-f782038ac509",
+                    "label": "Other road accident"
+                  },
+                  {
+                    "concept": "9ffd108b-6739-4039-86e3-16edce52c5dc",
+                    "label": "Accidental drowning"
+                  },
+                  {
+                    "concept": "6d15d3af-ca8b-4fe0-bd7a-8c7790f91c8d",
+                    "label": "Exposure to smoke"
+                  },
+                  {
+                    "concept": "c28d81b1-3d62-4a84-ad43-053d8d9b6441",
+                    "label": "Intentional self-harm"
+                  },
+                  {
+                    "concept": "48f1c960-5a05-4db6-8e35-a885c3da6022",
+                    "label": "Assault"
+                  },
+                  {
+                    "concept": "c340aaa1-a823-4896-9fed-e34b81af7bb2",
+                    "label": "Accidents caused by machinery"
+                  },
+                  {
+                    "concept": "f0fb0327-26ad-4696-85d7-1a021d624ace",
+                    "label": "Suicide"
+                  },
+                  {
+                    "concept": "9fa9f34e-931f-48c5-af89-aca939a83d5a",
+                    "label": "Homicide"
+                  },
+                  {
+                    "concept": "1933c828-ad29-4e01-8e8c-15570ee3fc94",
+                    "label": "Other medico legal case"
+                  },
+                  {
+                    "concept": "3ce0579f-29de-4020-b70d-f27af771f092",
+                    "label": "Road side accident"
+                  },
+                  {
+                    "concept": "d8007ccf-d90f-5d63-9a55-ae68788e530b",
+                    "label": "Animal bite"
+                  },
+                  {
+                    "concept": "ea47bd4c-7494-5e9c-a3a5-cbb1bd004c0e",
+                    "label": "Snake bite"
+                  },
+                  {
+                    "concept": "d2fbbd03-07be-5dcf-980e-214ce3219e83",
+                    "label": "Domestic violence"
+                  },
+                  {
+                    "concept": "f5d4be98-df83-5f83-8ba6-dd7fbe0f6306",
+                    "label": "Unconscious / unknown cause"
+                  },
+                  {
+                    "concept": "b07d7b0c-af1b-591b-8c35-772ff5b61aaa",
+                    "label": "Brought dead"
+                  },
+                  {
+                    "concept": "f98545ff-f353-5f20-a223-56d49bd2aaa6",
+                    "label": "Person in custody"
+                  }
+                ],
+                "calculate": {
+                  "calculateExpression": "resolve(api.getLatestObs(patient.id, 'b919c235-66be-4de3-9dec-20a699fe67ba', '6c816b60-03c3-4555-87c0-d2570712269d')).then(o => o && visit?.encounters?.some(e => o.encounter?.reference?.endsWith(e.uuid)) ? o.valueCodeableConcept?.coding?.find(c => !c.system)?.code : null)"
+                },
+                "isTransient": true
+              },
+              "readonly": true,
+              "questionInfo": "Read-only. Taken from the registration of this visit; empty if not flagged there."
+            },
+            {
+              "label": "MLC type at investigation",
+              "type": "obs",
+              "id": "mlcTypeAtInvestigation",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "86d01b76-a323-53c2-b2be-777cf42b7e61",
+                "answers": [
+                  {
+                    "concept": "17a16669-c79b-4076-af86-99669063cfdc",
+                    "label": "Burns"
+                  },
+                  {
+                    "concept": "27a65612-fa16-4fe7-9534-0e6d36b85d68",
+                    "label": "Rape"
+                  },
+                  {
+                    "concept": "4a4786c1-fb3c-4083-8266-6f8c2c880359",
+                    "label": "Accidental fall"
+                  },
+                  {
+                    "concept": "e20e9235-5ffe-4d16-8cd5-2a25fd5a2525",
+                    "label": "Poisoning"
+                  },
+                  {
+                    "concept": "93fc0d9f-10cd-40b1-997d-08ba8aef0f2a",
+                    "label": "Railway accident"
+                  },
+                  {
+                    "concept": "eedd135c-03ea-482c-bcb1-f782038ac509",
+                    "label": "Other road accident"
+                  },
+                  {
+                    "concept": "9ffd108b-6739-4039-86e3-16edce52c5dc",
+                    "label": "Accidental drowning"
+                  },
+                  {
+                    "concept": "6d15d3af-ca8b-4fe0-bd7a-8c7790f91c8d",
+                    "label": "Exposure to smoke"
+                  },
+                  {
+                    "concept": "c28d81b1-3d62-4a84-ad43-053d8d9b6441",
+                    "label": "Intentional self-harm"
+                  },
+                  {
+                    "concept": "48f1c960-5a05-4db6-8e35-a885c3da6022",
+                    "label": "Assault"
+                  },
+                  {
+                    "concept": "c340aaa1-a823-4896-9fed-e34b81af7bb2",
+                    "label": "Accidents caused by machinery"
+                  },
+                  {
+                    "concept": "f0fb0327-26ad-4696-85d7-1a021d624ace",
+                    "label": "Suicide"
+                  },
+                  {
+                    "concept": "9fa9f34e-931f-48c5-af89-aca939a83d5a",
+                    "label": "Homicide"
+                  },
+                  {
+                    "concept": "1933c828-ad29-4e01-8e8c-15570ee3fc94",
+                    "label": "Other medico legal case"
+                  },
+                  {
+                    "concept": "3ce0579f-29de-4020-b70d-f27af771f092",
+                    "label": "Road side accident"
+                  },
+                  {
+                    "concept": "d8007ccf-d90f-5d63-9a55-ae68788e530b",
+                    "label": "Animal bite"
+                  },
+                  {
+                    "concept": "ea47bd4c-7494-5e9c-a3a5-cbb1bd004c0e",
+                    "label": "Snake bite"
+                  },
+                  {
+                    "concept": "d2fbbd03-07be-5dcf-980e-214ce3219e83",
+                    "label": "Domestic violence"
+                  },
+                  {
+                    "concept": "f5d4be98-df83-5f83-8ba6-dd7fbe0f6306",
+                    "label": "Unconscious / unknown cause"
+                  },
+                  {
+                    "concept": "b07d7b0c-af1b-591b-8c35-772ff5b61aaa",
+                    "label": "Brought dead"
+                  },
+                  {
+                    "concept": "f98545ff-f353-5f20-a223-56d49bd2aaa6",
+                    "label": "Person in custody"
+                  }
+                ]
+              },
+              "required": true
+            }
+          ]
+        },
+        {
+          "label": "Incident and history",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date and time of incident",
+              "type": "obs",
+              "id": "incidentDatetime",
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "eb7a0bb7-ecba-5e69-a40a-7d8176cd8297"
+              }
+            },
+            {
+              "label": "Place of incident",
+              "type": "obs",
+              "id": "incidentPlace",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "2c0c42d7-88ba-586b-8452-29308f4be4fe"
+              }
+            },
+            {
+              "label": "Brought by",
+              "type": "obs",
+              "id": "broughtBy",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d1581d00-409c-5714-b381-4386d0e5a7e1",
+                "answers": [
+                  {
+                    "concept": "9f740fc0-a7ba-5904-a33f-ebd416d83974",
+                    "label": "Self"
+                  },
+                  {
+                    "concept": "ee738ae7-178c-5cab-8844-f683d449906e",
+                    "label": "Relative or friend"
+                  },
+                  {
+                    "concept": "4dc7a178-7b6b-5fd3-b093-afc6d44edce1",
+                    "label": "Police"
+                  },
+                  {
+                    "concept": "a3a11855-c0eb-5cf5-9948-16380e6ff43a",
+                    "label": "Ambulance"
+                  },
+                  {
+                    "concept": "33e480a4-3c53-5a12-9238-30101aec70dd",
+                    "label": "Good Samaritan or passer-by"
+                  },
+                  {
+                    "concept": "035c356e-2717-5a7a-a781-27e555184804",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "required": true
+            },
+            {
+              "label": "Name, relation and contact of the person",
+              "type": "obs",
+              "id": "broughtByDetails",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "931ef241-3d4e-5407-8b35-c62634b21f9f",
+                "rows": 2
+              },
+              "hide": {
+                "hideWhenExpression": "broughtBy === '9f740fc0-a7ba-5904-a33f-ebd416d83974'"
+              }
+            },
+            {
+              "label": "History given by",
+              "type": "obs",
+              "id": "informant",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "17754b8b-0d5c-5bda-8bc9-d7c4c9e10742",
+                "answers": [
+                  {
+                    "concept": "84c76a5a-245a-5df4-8208-9692941bb91c",
+                    "label": "Patient"
+                  },
+                  {
+                    "concept": "b1a08f6b-c33c-5799-aa47-7f93ec550bde",
+                    "label": "Relative or attendant"
+                  },
+                  {
+                    "concept": "d7820af3-1e8e-5bc4-9ee7-18d15070d0b9",
+                    "label": "Police"
+                  },
+                  {
+                    "concept": "fd1acd2f-b887-5471-aedf-b8f33b8a4896",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "required": true
+            },
+            {
+              "label": "History of incident (as given)",
+              "type": "obs",
+              "id": "incidentHistory",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "3df6172f-834f-5893-8437-73977457b886",
+                "rows": 4
+              },
+              "required": true
+            }
+          ]
+        },
+        {
+          "label": "Consent and identification",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Consent for medico-legal examination",
+              "type": "obs",
+              "id": "consent",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "00088bc6-256d-59ed-87fd-02f0db5f6916",
+                "answers": [
+                  {
+                    "concept": "7b88db3d-1a04-56eb-9cf9-9299b2b90688",
+                    "label": "Consent given"
+                  },
+                  {
+                    "concept": "edf6bcbc-c319-5c6c-8932-f483b33275b1",
+                    "label": "Consent refused (informed refusal)"
+                  }
+                ]
+              },
+              "required": true
+            },
+            {
+              "label": "Identification mark 1",
+              "type": "obs",
+              "id": "idMark1",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ed3d0b46-b5bc-5ab8-b792-54e25cb5714f"
+              },
+              "required": true
+            },
+            {
+              "label": "Identification mark 2",
+              "type": "obs",
+              "id": "idMark2",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "39891486-9fdb-5deb-bd48-8a93085efa90"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Medico-legal examination",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Level of consciousness",
+              "type": "obs",
+              "id": "consciousness",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "533898b6-df4a-5298-9efa-1797d3abd35b",
+                "answers": [
+                  {
+                    "concept": "3d6f0512-301b-5986-ab19-35373847b83c",
+                    "label": "Conscious and oriented"
+                  },
+                  {
+                    "concept": "eac3b251-aa31-5477-b5cf-18e58a0b5bdb",
+                    "label": "Conscious but confused"
+                  },
+                  {
+                    "concept": "4278000d-8830-5cd6-9d3c-014b612218f8",
+                    "label": "Drowsy"
+                  },
+                  {
+                    "concept": "58805f99-4e85-5311-9c67-581a63c1808d",
+                    "label": "Unconscious"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "GCS score (3-15)",
+              "type": "obs",
+              "id": "gcs",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "985f18eb-91c6-5fbe-b150-f22a2b5c5473",
+                "min": "3",
+                "max": "15"
+              }
+            },
+            {
+              "label": "Smell of alcohol on breath",
+              "type": "obs",
+              "id": "alcoholSmell",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b115e9d3-dec1-5841-8b6a-67bc90b9555f",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Injuries (one row per injury, head to toe)",
+              "type": "obsGroup",
+              "id": "injuries",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "fb31d884-0ff7-53a6-9788-b4bb64ff24f3"
+              },
+              "questions": [
+                {
+                  "label": "Type of injury",
+                  "type": "obs",
+                  "id": "injuryType",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "8dbf2f86-c8d1-50c2-9949-2e938306e4f0",
+                    "answers": [
+                      {
+                        "concept": "d5e61754-4619-51a5-905f-3aada5f58fee",
+                        "label": "Abrasion"
+                      },
+                      {
+                        "concept": "4bd2cde8-d9aa-592c-8a10-dedc6614e52b",
+                        "label": "Contusion"
+                      },
+                      {
+                        "concept": "0deb973c-2e31-57f6-840d-9016abc5848b",
+                        "label": "Laceration"
+                      },
+                      {
+                        "concept": "2a45af05-7d0c-51ca-bc88-e580d0857585",
+                        "label": "Incised wound"
+                      },
+                      {
+                        "concept": "13750dc0-8cbb-5c06-b8c4-45990fca29c6",
+                        "label": "Stab or puncture wound"
+                      },
+                      {
+                        "concept": "e8ad76be-4c2b-59f5-b8a8-560862340795",
+                        "label": "Fracture or dislocation"
+                      },
+                      {
+                        "concept": "f1753f73-a1b1-53aa-be38-2dddcbee6381",
+                        "label": "Burn or scald"
+                      },
+                      {
+                        "concept": "8ad8cdb8-8df3-5052-ac05-d2ed733251c1",
+                        "label": "Firearm wound"
+                      },
+                      {
+                        "concept": "80b3dc89-5a3f-550f-9055-f60fe72d1e19",
+                        "label": "Bite mark"
+                      },
+                      {
+                        "concept": "856bf061-afb8-5094-b8a8-4f112b84ef50",
+                        "label": "Other injury"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Site",
+                  "type": "obs",
+                  "id": "injurySite",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "a188dc34-b4a8-546e-916f-353540e5b146"
+                  }
+                },
+                {
+                  "label": "Size (L x B x D cm)",
+                  "type": "obs",
+                  "id": "injurySize",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "71fd268a-5463-5f8d-900c-f65cc45f4e86"
+                  }
+                },
+                {
+                  "label": "Probable weapon or cause",
+                  "type": "obs",
+                  "id": "injuryWeapon",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "738400d1-f542-5769-b841-5b87dc0769d1",
+                    "answers": [
+                      {
+                        "concept": "3d10cdad-958a-538c-be7c-e8fba4acc499",
+                        "label": "Blunt force"
+                      },
+                      {
+                        "concept": "7fa0f595-dee4-5360-aac3-a3a7e57e69a1",
+                        "label": "Sharp object"
+                      },
+                      {
+                        "concept": "f51c9f60-aa0b-5dad-91c9-35bb4582f9fa",
+                        "label": "Firearm"
+                      },
+                      {
+                        "concept": "ec3c66ed-fb08-51aa-9042-3105873bea16",
+                        "label": "Heat or flame"
+                      },
+                      {
+                        "concept": "2705bb6e-2d9c-5772-841c-4afe26e41482",
+                        "label": "Chemical"
+                      },
+                      {
+                        "concept": "686ab927-8385-588e-a461-a9746d26315e",
+                        "label": "Electricity"
+                      },
+                      {
+                        "concept": "aad96462-61b0-5c2b-97ae-cf5e8896dc29",
+                        "label": "Animal or human bite"
+                      },
+                      {
+                        "concept": "fd714267-949e-507c-a41d-15628d8cd736",
+                        "label": "Unknown or other"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Nature of injury",
+                  "type": "obs",
+                  "id": "injuryNature",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "59d09f9c-fc24-5232-bb3b-1c18dfc5b88c",
+                    "answers": [
+                      {
+                        "concept": "f772355c-3a82-534a-bb44-aaaf2c3bc2e9",
+                        "label": "Simple"
+                      },
+                      {
+                        "concept": "10000072-e364-5883-a700-03153d8a8cab",
+                        "label": "Grievous"
+                      },
+                      {
+                        "concept": "62f4397d-16e4-54e4-96e2-8b8cdbda3d7e",
+                        "label": "Dangerous to life"
+                      },
+                      {
+                        "concept": "3dc98b0c-db54-5d09-b4ab-a7fa09e82447",
+                        "label": "Opinion reserved"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Samples, opinion and disposal",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Samples preserved and handed over",
+              "type": "obs",
+              "id": "samples",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "602fd8c7-8a6a-58ef-8709-8124c958e91e",
+                "rows": 2
+              }
+            },
+            {
+              "label": "Opinion",
+              "type": "obs",
+              "id": "opinion",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "648d1120-bb35-5ea7-a817-5d200ddd999b",
+                "rows": 3
+              }
+            },
+            {
+              "label": "Disposal",
+              "type": "obs",
+              "id": "disposal",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2893e1c1-933a-50b0-8ae9-2a7b7796b296",
+                "answers": [
+                  {
+                    "concept": "dcefd373-b9d4-5801-ac4c-6ece143db095",
+                    "label": "Discharged after treatment"
+                  },
+                  {
+                    "concept": "2ec07c7f-a89b-518b-ba9a-742f07ebc63a",
+                    "label": "Admitted"
+                  },
+                  {
+                    "concept": "abfd8fbe-46ee-50f1-9c4c-d6d028eeac08",
+                    "label": "Referred"
+                  },
+                  {
+                    "concept": "36cdc5ec-399e-5a47-a27e-fd34ada7451a",
+                    "label": "Left against medical advice"
+                  },
+                  {
+                    "concept": "0c9c27d9-8598-5338-b0d7-c590b68c31de",
+                    "label": "Expired"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Police intimation",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Police informed",
+              "type": "obs",
+              "id": "policeInformed",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "235a2d23-b2dd-5695-8133-15a42d907954",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "required": true
+            },
+            {
+              "label": "Date and time informed",
+              "type": "obs",
+              "id": "policeDatetime",
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "e1afc930-5991-500b-8291-a432e9096b63"
+              },
+              "hide": {
+                "hideWhenExpression": "policeInformed !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Police station",
+              "type": "obs",
+              "id": "policeStation",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "4a0c88f2-1af6-5920-8bed-4f352fe0568f"
+              },
+              "hide": {
+                "hideWhenExpression": "policeInformed !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Officer name and belt number",
+              "type": "obs",
+              "id": "policeOfficer",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "2f71688b-591f-5760-be09-95e23cc72186"
+              },
+              "hide": {
+                "hideWhenExpression": "policeInformed !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "DD/GD entry number",
+              "type": "obs",
+              "id": "policeDd",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "41c2823a-648b-51d3-9c20-cc702dbc88b9"
+              },
+              "hide": {
+                "hideWhenExpression": "policeInformed !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "FIR number",
+              "type": "obs",
+              "id": "policeFir",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "78818f46-f8a9-505d-b379-0ddb2a026f4d"
+              },
+              "hide": {
+                "hideWhenExpression": "policeInformed !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

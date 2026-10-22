@@ -1,0 +1,799 @@
+{
+  "uuid": "ec3b5ff5-6c5c-3312-877c-1e6a2015c995",
+  "name": "History and Examination",
+  "description": "History and examination for an OPD visit: presenting complaints, history, general, systemic and local examination. Diagnoses and clinical notes: Visit Note. Vitals: Triage. Orders, allergies, medication history, procedures and follow-up: standard O3 tools.",
+  "version": "1",
+  "published": true,
+  "retired": false,
+  "encounter": "Consultation",
+  "processor": "EncounterFormProcessor",
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "History and examination",
+      "sections": [
+        {
+          "label": "Presenting complaints",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "complaintsNote",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Add one row per complaint with how many days it has lasted. If a complaint is not in the list, describe it in **History of present illness**."
+              ]
+            },
+            {
+              "label": "Presenting complaints",
+              "type": "obsGroup",
+              "id": "complaints",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "3f241329-56a8-54fe-b64f-9ffec60b7f65"
+              },
+              "questions": [
+                {
+                  "label": "Complaint",
+                  "type": "obs",
+                  "id": "complaint",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "5219AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "answers": [
+                      {
+                        "concept": "151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Abdominal pain"
+                      },
+                      {
+                        "concept": "141631AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Abnormal Uterine Bleeding"
+                      },
+                      {
+                        "concept": "121543AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Anxiety"
+                      },
+                      {
+                        "concept": "148035AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Back pain"
+                      },
+                      {
+                        "concept": "840AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Bloody Urine"
+                      },
+                      {
+                        "concept": "117671AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Blood in stool"
+                      },
+                      {
+                        "concept": "131021AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Breast Pain"
+                      },
+                      {
+                        "concept": "120749AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Chest Pain"
+                      },
+                      {
+                        "concept": "871AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Cold and Chills"
+                      },
+                      {
+                        "concept": "120345AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Confusion"
+                      },
+                      {
+                        "concept": "143264AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Cough"
+                      },
+                      {
+                        "concept": "113054AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Convulsions"
+                      },
+                      {
+                        "concept": "144576AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Coma"
+                      },
+                      {
+                        "concept": "106AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Coryza"
+                      },
+                      {
+                        "concept": "143129AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Crying Infant"
+                      },
+                      {
+                        "concept": "119574AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Delirium"
+                      },
+                      {
+                        "concept": "119537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Depression"
+                      },
+                      {
+                        "concept": "142412AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Diarrhea"
+                      },
+                      {
+                        "concept": "122496AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Difficult in breathing"
+                      },
+                      {
+                        "concept": "118789AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Difficulty in swallowing"
+                      },
+                      {
+                        "concept": "142247AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Discharge from Penis"
+                      },
+                      {
+                        "concept": "141830AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Dizziness"
+                      },
+                      {
+                        "concept": "141585AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Ear Pain"
+                      },
+                      {
+                        "concept": "141128AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Epigastric Pain"
+                      },
+                      {
+                        "concept": "131040AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Eye Pain"
+                      },
+                      {
+                        "concept": "140941AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Excessive Sweating"
+                      },
+                      {
+                        "concept": "162626AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Fatigue/weakness"
+                      },
+                      {
+                        "concept": "140070AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Flank Pain"
+                      },
+                      {
+                        "concept": "140238AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Fever"
+                      },
+                      {
+                        "concept": "135462AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Genital Ulcer"
+                      },
+                      {
+                        "concept": "139084AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Headache"
+                      },
+                      {
+                        "concept": "117698AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Hearing Loss"
+                      },
+                      {
+                        "concept": "879AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Itchiness/Pruritus"
+                      },
+                      {
+                        "concept": "116334AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Lethargy"
+                      },
+                      {
+                        "concept": "135595AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Loss of Appetite"
+                      },
+                      {
+                        "concept": "135488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Lymphadenopathy"
+                      },
+                      {
+                        "concept": "121657AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Memory Loss"
+                      },
+                      {
+                        "concept": "111721AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Mouth Ulceration"
+                      },
+                      {
+                        "concept": "131015AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Mouth Pain"
+                      },
+                      {
+                        "concept": "133028AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Muscle cramps"
+                      },
+                      {
+                        "concept": "133632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Muscle Pain"
+                      },
+                      {
+                        "concept": "121AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Mylagia"
+                      },
+                      {
+                        "concept": "5978AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Nausea"
+                      },
+                      {
+                        "concept": "133469AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Neck Pain"
+                      },
+                      {
+                        "concept": "133027AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Night sweats"
+                      },
+                      {
+                        "concept": "132653AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Numbness"
+                      },
+                      {
+                        "concept": "162628AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Unexplained bleeding"
+                      },
+                      {
+                        "concept": "125225AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Pain when Swallowing"
+                      },
+                      {
+                        "concept": "131034AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Pelvic Pain"
+                      },
+                      {
+                        "concept": "5953AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Poor Vision"
+                      },
+                      {
+                        "concept": "512AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Rash"
+                      },
+                      {
+                        "concept": "127777AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Red Eye"
+                      },
+                      {
+                        "concept": "6017AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Refusal to feed"
+                      },
+                      {
+                        "concept": "113224AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Running/Blocked nose"
+                      },
+                      {
+                        "concept": "131032AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Scrotal Pain"
+                      },
+                      {
+                        "concept": "206AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Seizure"
+                      },
+                      {
+                        "concept": "126535AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Shoulder Pain"
+                      },
+                      {
+                        "concept": "112989AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Shock"
+                      },
+                      {
+                        "concept": "158843AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Sore Throat"
+                      },
+                      {
+                        "concept": "141597AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Sleep Disturbance"
+                      },
+                      {
+                        "concept": "125198AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Swollen Legs"
+                      },
+                      {
+                        "concept": "160208AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Urinary Symptoms"
+                      },
+                      {
+                        "concept": "157498AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Weakness of Limbs"
+                      },
+                      {
+                        "concept": "832AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Weight Loss"
+                      },
+                      {
+                        "concept": "123396AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Vaginal Discharge"
+                      },
+                      {
+                        "concept": "122983AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Vomiting"
+                      },
+                      {
+                        "concept": "111525AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Vertigo"
+                      },
+                      {
+                        "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Other"
+                      }
+                    ],
+                    "isSearchable": true
+                  }
+                },
+                {
+                  "label": "Duration (days)",
+                  "type": "obs",
+                  "id": "complaintDuration",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "1731AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "min": "0"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "History of present illness",
+              "type": "obs",
+              "id": "hpi",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "1390AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 4
+              }
+            }
+          ]
+        },
+        {
+          "label": "History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "historyNote",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Allergies and current medicines are recorded in their own chart widgets, not here."
+              ]
+            },
+            {
+              "label": "Family history",
+              "type": "obs",
+              "id": "familyHistory",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "160618AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 2
+              }
+            },
+            {
+              "label": "Smoking",
+              "type": "obs",
+              "id": "smoking",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "163201AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "answers": [
+                  {
+                    "concept": "163198AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Never smoker"
+                  },
+                  {
+                    "concept": "163200AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Unknown if ever smoked"
+                  },
+                  {
+                    "concept": "152722AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Smoker"
+                  },
+                  {
+                    "concept": "152807AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Former smoker"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Smokeless tobacco (gutkha, khaini, paan)",
+              "type": "obs",
+              "id": "smokelessTobacco",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ba32a505-4039-5e7d-b0cf-73b0a68922e0",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Alcohol",
+              "type": "obs",
+              "id": "alcohol",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "159449AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "answers": [
+                  {
+                    "concept": "1090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Never"
+                  },
+                  {
+                    "concept": "159450AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Currently"
+                  },
+                  {
+                    "concept": "159452AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "In the past"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Appetite, sleep, bowel and bladder",
+              "type": "obs",
+              "id": "personalHistory",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "f5e9252e-3b19-5e0d-9270-b3d757022df2",
+                "rows": 2
+              }
+            },
+            {
+              "label": "Last menstrual period",
+              "type": "obs",
+              "id": "lmp",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "1427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              },
+              "hide": {
+                "hideWhenExpression": "sex !== 'F' || age < 10"
+              }
+            },
+            {
+              "label": "Pregnant?",
+              "type": "obs",
+              "id": "pregnant",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5272AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  },
+                  {
+                    "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Unknown"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "sex !== 'F' || age < 10"
+              }
+            }
+          ]
+        },
+        {
+          "label": "General examination",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "vitalsNote",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Vitals, weight, height and BMI come from **Triage**."
+              ]
+            },
+            {
+              "label": "General examination findings",
+              "type": "obs",
+              "id": "gpeFindings",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "2d18021a-b0cb-5ac7-b6ee-cca0af27f72e",
+                "answers": [
+                  {
+                    "concept": "1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No abnormality (normal)"
+                  },
+                  {
+                    "concept": "5245AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Pallor"
+                  },
+                  {
+                    "concept": "136443AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Icterus (jaundice)"
+                  },
+                  {
+                    "concept": "143050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Cyanosis"
+                  },
+                  {
+                    "concept": "140125AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Clubbing"
+                  },
+                  {
+                    "concept": "135488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Lymphadenopathy"
+                  },
+                  {
+                    "concept": "460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Oedema"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "General examination notes",
+              "type": "obs",
+              "id": "gpeNotes",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "163042AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 2
+              }
+            }
+          ]
+        },
+        {
+          "label": "Systemic examination",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "systemicNote",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Tick the findings; add anything else in the notes of that system."
+              ]
+            },
+            {
+              "label": "Cardiovascular system (CVS)",
+              "type": "obs",
+              "id": "cvs",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "1124AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "answers": [
+                  {
+                    "concept": "562AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Cardiac murmur"
+                  },
+                  {
+                    "concept": "130560AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Cardiac rub"
+                  },
+                  {
+                    "concept": "140147AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Elevated blood pressure"
+                  },
+                  {
+                    "concept": "136522AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Irregular heartbeat"
+                  },
+                  {
+                    "concept": "130987AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Palpitations"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CVS notes",
+              "type": "obs",
+              "id": "cvsNotes",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "163046AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 2
+              }
+            },
+            {
+              "label": "Respiratory system (RS)",
+              "type": "obs",
+              "id": "rs",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "1123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "answers": [
+                  {
+                    "concept": "164440AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Reduced breathing"
+                  },
+                  {
+                    "concept": "146893AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Bronchial breathing"
+                  },
+                  {
+                    "concept": "136768AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Chest in-drawing"
+                  },
+                  {
+                    "concept": "127640AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Crackles"
+                  },
+                  {
+                    "concept": "145712AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Dullness"
+                  },
+                  {
+                    "concept": "156534AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Grunting"
+                  },
+                  {
+                    "concept": "127639AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Respiratory distress"
+                  },
+                  {
+                    "concept": "136790AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Stridor"
+                  },
+                  {
+                    "concept": "122864AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Wheezing"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "RS notes",
+              "type": "obs",
+              "id": "rsNotes",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "160689AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 2
+              }
+            },
+            {
+              "label": "Per abdomen (P/A)",
+              "type": "obs",
+              "id": "pa",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "1125AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "answers": [
+                  {
+                    "concept": "150915AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Abdominal distension"
+                  },
+                  {
+                    "concept": "5103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Abdominal mass"
+                  },
+                  {
+                    "concept": "5009AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Splenomegaly"
+                  },
+                  {
+                    "concept": "5008AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Hepatomegaly"
+                  },
+                  {
+                    "concept": "5105AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Abdominal tenderness"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "P/A notes",
+              "type": "obs",
+              "id": "paNotes",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "160947AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 2
+              }
+            },
+            {
+              "label": "Central nervous system (CNS)",
+              "type": "obs",
+              "id": "cns",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "1082AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "answers": [
+                  {
+                    "concept": "150817AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Abnormal reflexes"
+                  },
+                  {
+                    "concept": "118872AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Altered sensations"
+                  },
+                  {
+                    "concept": "153009AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Brudzinski's sign"
+                  },
+                  {
+                    "concept": "1836AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Bulging fontenelle"
+                  },
+                  {
+                    "concept": "120345AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Confusion"
+                  },
+                  {
+                    "concept": "136282AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Kernicterus"
+                  },
+                  {
+                    "concept": "157498AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Limb weakness"
+                  },
+                  {
+                    "concept": "135592AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Loss of consciousness"
+                  },
+                  {
+                    "concept": "112721AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Stiff neck"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "CNS notes",
+              "type": "obs",
+              "id": "cnsNotes",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "163109AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 2
+              }
+            }
+          ]
+        },
+        {
+          "label": "Local / other system examination",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Local / other system examination",
+              "type": "obs",
+              "id": "localExam",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "079cd527-5928-5087-9413-fcbf28565bc1",
+                "rows": 3
+              }
+            },
+            {
+              "id": "diagnosisNote",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Record diagnoses and the clinical note in the **Visit Note**."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

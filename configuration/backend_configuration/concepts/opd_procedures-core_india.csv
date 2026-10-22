@@ -1,0 +1,12 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Description:en,Data class,Data type,Answers,Members,_version:1,_order:1130
+2ac143f9-c8f8-5474-bc33-3c70e66924a7,,,Intramuscular injection administration (OPD procedure),IM injection,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,
+74d10d68-aa16-5af7-a1cc-e8f57d65df52,,,Intravenous injection administration (OPD procedure),IV injection,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,
+879bbcd0-17a4-549c-8859-1f666df903b0,,,Subcutaneous injection administration (OPD procedure),SC injection,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,
+a209e15e-979b-5555-a5e0-605354275fe3,,,Nebulisation (OPD procedure),Nebulisation,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,
+e56feba2-dd3b-5d54-94fe-909cf8a72fd3,,,Electrocardiogram recording (OPD procedure),ECG,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,
+a232f675-6a06-558c-87f6-b3543befcf87,,,Incision and drainage (OPD procedure),Incision and drainage,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,
+47857556-1f1a-5276-9880-94618efc091a,,,Suture removal (OPD procedure),Suture removal,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,
+9e32778d-060e-5da6-a516-ff23f19dac0d,,,Urinary catheterisation (OPD procedure),Urinary catheterisation,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,
+dfc29c7f-4f46-5900-8f21-ccd1a2455cda,,,Ear syringing (OPD procedure),Ear syringing,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,
+ed30b5ba-5190-5f06-9a7e-47dccc857e00,,,Plaster or slab application (OPD procedure),Plaster or slab application,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,
+aca17caf-c51a-5a36-b84f-c0e944c71ef5,,,Nasogastric tube insertion (OPD procedure),Nasogastric tube insertion,Minor OPD procedure (recorded in the Procedures app),Procedure,N/A,,,,

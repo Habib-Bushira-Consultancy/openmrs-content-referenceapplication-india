@@ -2,7 +2,7 @@
   "name": "Structured SOAP note",
   "description": "A form used to collect clinical information in a structured form",
   "version": "1.1",
-  "published": true,
+  "published": false,
   "uuid": "32f9bf88-f337-4995-9c37-6e639cc778f8",
   "retired": false,
   "encounter": "Consultation",

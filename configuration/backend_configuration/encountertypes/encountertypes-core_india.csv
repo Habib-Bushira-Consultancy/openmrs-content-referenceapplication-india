@@ -1,2 +1,4 @@
 Uuid,Void/Retire,Name,Description,View privilege,Edit privilege,_order:1000
 6176e168-7aff-5958-9c56-3fb277b37a3a,,Consultation Not Completed,"Patient not available or consultation cancelled, with reason",,,
+2aee98e7-37c4-5444-940a-cbeeb0551a83,,Medico-Legal Case,Medico-legal case documentation and police intimation,,,
+bb4ee937-d38f-52f2-837a-2588af392e60,,Medical Certificate,Medical certificate issued to the patient,,,
