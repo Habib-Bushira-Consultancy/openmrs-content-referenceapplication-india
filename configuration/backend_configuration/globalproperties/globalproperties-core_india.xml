@@ -30,6 +30,27 @@
             <value>basicPrioritySortWeightGenerator</value>
         </globalProperty>
 
+        <!-- Queue module 3.1+: end every open queue entry once a day at this time (HH:mm, server local time),
+             so each queue starts the day empty. A patient back the next day on the same open visit is re-queued. -->
+        <globalProperty>
+            <property>queue.autoCloseQueueEntriesAtTime</property>
+            <value>23:59</value>
+        </globalProperty>
+
+        <!-- Queues cleared at that time: comma-separated queue names or uuids; empty = all queues -->
+        <globalProperty>
+            <property>queue.autoCloseQueueEntriesForQueues</property>
+            <value></value>
+        </globalProperty>
+
+        <!-- Visit auto-close: EMR API "Close Stale Visits" task closes visits with no activity (no new encounter)
+             for this many hours. 240 h = 10 days. Needs the task org.openmrs.module.emrapi.adt.CloseStaleVisitsTask
+             scheduled once per server (Manage Scheduler). Closing a visit also ends its open queue entries. -->
+        <globalProperty>
+            <property>emrapi.visitExpireHours</property>
+            <value>240</value>
+        </globalProperty>
+
         <globalProperty>
             <property>concept.causeOfDeath</property>
             <value>9272a14b-7260-4353-9e5b-5787b5dead9d</value>
