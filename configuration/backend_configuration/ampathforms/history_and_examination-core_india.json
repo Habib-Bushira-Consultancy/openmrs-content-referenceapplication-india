@@ -1,7 +1,7 @@
 {
   "uuid": "ec3b5ff5-6c5c-3312-877c-1e6a2015c995",
   "name": "History and Examination",
-  "description": "History and examination for an OPD visit: presenting complaints, history, general, systemic and local examination. Diagnoses and clinical notes: Visit Note. Vitals: Triage. Orders, allergies, medication history, procedures and follow-up: standard O3 tools.",
+  "description": "History and examination for an OPD visit: presenting complaints, personal & social, family, surgical, past medication and menstrual history, general, systemic and local examination. Diagnoses and clinical notes: Visit Note. Vitals: Triage. Orders, allergies, medication history, procedures and follow-up: standard O3 tools.",
   "version": "1",
   "published": true,
   "retired": false,
@@ -344,7 +344,7 @@
           ]
         },
         {
-          "label": "History",
+          "label": "Personal & Social History",
           "isExpanded": "true",
           "questions": [
             {
@@ -358,21 +358,11 @@
               ]
             },
             {
-              "label": "Family history",
-              "type": "obs",
-              "id": "familyHistory",
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "160618AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rows": 2
-              }
-            },
-            {
               "label": "Smoking",
               "type": "obs",
               "id": "smoking",
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "163201AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "answers": [
                   {
@@ -380,18 +370,54 @@
                     "label": "Never smoker"
                   },
                   {
-                    "concept": "163200AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Unknown if ever smoked"
-                  },
-                  {
                     "concept": "152722AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Smoker"
+                    "label": "Current smoker"
                   },
                   {
                     "concept": "152807AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Former smoker"
+                    "label": "Ex-smoker"
+                  },
+                  {
+                    "concept": "163197AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Occasional smoker"
                   }
                 ]
+              }
+            },
+            {
+              "label": "Frequency",
+              "type": "obs",
+              "id": "smokingFrequency",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "6fb0a458-cadf-5875-92a5-ddf9a215254f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(['152722AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', '163197AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'], smoking)"
+              }
+            },
+            {
+              "label": "No. of cigarettes (per day)",
+              "type": "obs",
+              "id": "cigarettesPerDay",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1546AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "min": "0",
+                "max": "200"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(['152722AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', '163197AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'], smoking)"
+              }
+            },
+            {
+              "label": "Comments (smoking)",
+              "type": "obs",
+              "id": "smokingComments",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "38bc22f8-498a-5803-b715-2a0c11a8027e",
+                "rows": 2
               }
             },
             {
@@ -418,26 +444,67 @@
               }
             },
             {
-              "label": "Alcohol",
+              "label": "Alcohol intake",
               "type": "obs",
               "id": "alcohol",
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "159449AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "answers": [
                   {
-                    "concept": "1090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Never"
-                  },
-                  {
                     "concept": "159450AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "Currently"
+                    "label": "Alcoholic"
                   },
                   {
-                    "concept": "159452AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "label": "In the past"
+                    "concept": "1090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Non-alcoholic"
                   }
                 ]
+              }
+            },
+            {
+              "label": "Frequency",
+              "type": "obs",
+              "id": "alcoholFrequency",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a6ff3813-3781-5e32-9c5d-1232cf2fb8c1"
+              },
+              "hide": {
+                "hideWhenExpression": "alcohol !== '159450AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Standard drinks per day",
+              "type": "obs",
+              "id": "standardDrinksPerDay",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "60b89de0-1473-5195-9419-2294f079a89e",
+                "min": "0",
+                "max": "100"
+              },
+              "hide": {
+                "hideWhenExpression": "alcohol !== '159450AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Comments (alcohol)",
+              "type": "obs",
+              "id": "alcoholComments",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "e1f9037d-9b55-5f26-880a-7c4e9b863914",
+                "rows": 2
+              }
+            },
+            {
+              "label": "Education of the patient",
+              "type": "obs",
+              "id": "education",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "92c8c89c-6d98-54b7-b5a3-3ee3ecbaf2bc"
               }
             },
             {
@@ -449,7 +516,335 @@
                 "concept": "f5e9252e-3b19-5e0d-9270-b3d757022df2",
                 "rows": 2
               }
+            }
+          ]
+        },
+        {
+          "label": "Family History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Mother alive",
+              "type": "obs",
+              "id": "motherAlive",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "34dd3927-f3b7-52ec-a88e-2e78e397f33f",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              }
             },
+            {
+              "label": "Age at death (mother), years",
+              "type": "obs",
+              "id": "motherAgeAtDeath",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "3d51eb2f-b466-507c-bd1b-83f22241ebfd",
+                "min": "0",
+                "max": "130"
+              },
+              "hide": {
+                "hideWhenExpression": "motherAlive !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Cause of death (mother)",
+              "type": "obs",
+              "id": "motherCauseOfDeath",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "b5b3d23b-3d90-5135-98e8-dc26618f7c6d"
+              },
+              "hide": {
+                "hideWhenExpression": "motherAlive !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Father alive",
+              "type": "obs",
+              "id": "fatherAlive",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8792f2d3-0e01-51eb-8a9f-c5b2b1191f3f",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Age at death (father), years",
+              "type": "obs",
+              "id": "fatherAgeAtDeath",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "fa919082-0acb-5f12-92a5-ff54f31fd532",
+                "min": "0",
+                "max": "130"
+              },
+              "hide": {
+                "hideWhenExpression": "fatherAlive !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Cause of death (father)",
+              "type": "obs",
+              "id": "fatherCauseOfDeath",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1cab7674-08d9-530e-88ce-6f20bc436efa"
+              },
+              "hide": {
+                "hideWhenExpression": "fatherAlive !== '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "No significant family history",
+              "type": "obs",
+              "id": "noSignificantFamilyHistory",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "3f517bab-f992-521d-a8a9-48b0e6fd4676",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No significant family history"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Comments (family history)",
+              "type": "obs",
+              "id": "familyHistory",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "160618AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 2
+              }
+            }
+          ]
+        },
+        {
+          "label": "Surgical History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Previous surgery",
+              "type": "obsGroup",
+              "id": "surgicalHistory",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "160714AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              },
+              "hide": {
+                "hideWhenExpression": "includes(noSurgery, '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+              },
+              "questions": [
+                {
+                  "label": "Surgical",
+                  "type": "obs",
+                  "id": "surgery",
+                  "questionOptions": {
+                    "rendering": "ui-select-extended",
+                    "concept": "1651AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "datasource": {
+                      "name": "problem_datasource",
+                      "config": {
+                        "class": "8d490bf4-c2cc-11de-8d13-0010c06ffd0f"
+                      }
+                    }
+                  }
+                },
+                {
+                  "label": "Surgery date",
+                  "type": "obs",
+                  "id": "surgeryDate",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "160715AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "allowFutureDates": "false"
+                  }
+                },
+                {
+                  "label": "Surgery notes / comments",
+                  "type": "obs",
+                  "id": "surgeryNotes",
+                  "questionOptions": {
+                    "rendering": "textarea",
+                    "concept": "160716AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "rows": 2
+                  }
+                }
+              ]
+            },
+            {
+              "label": "No surgery",
+              "type": "obs",
+              "id": "noSurgery",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "531c3ea7-583d-5dbd-aaf1-40d484fec87a",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No previous surgery"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Past Medication History",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "id": "pastMedicationNote",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Medicines taken before this visit, as told by the patient. These are history only: they are not prescriptions and do not go to the pharmacy. Prescribe current medicines from the order basket."
+              ]
+            },
+            {
+              "label": "Past medication",
+              "type": "obsGroup",
+              "id": "pastMedicationHistory",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "cd520726-55f8-5c56-8f6d-61c2bb550053"
+              },
+              "hide": {
+                "hideWhenExpression": "includes(noPastMedication, '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+              },
+              "questions": [
+                {
+                  "label": "Medication",
+                  "type": "obs",
+                  "id": "pastMedication",
+                  "questionOptions": {
+                    "rendering": "ui-select-extended",
+                    "concept": "6f73b485-258e-5dc2-acf4-51ed62577d7b",
+                    "datasource": {
+                      "name": "drug_datasource",
+                      "config": {
+                        "class": "8d490dfc-c2cc-11de-8d13-0010c06ffd0f"
+                      }
+                    }
+                  }
+                },
+                {
+                  "label": "Dose and frequency",
+                  "type": "obs",
+                  "id": "pastMedicationDose",
+                  "questionOptions": {
+                    "rendering": "text",
+                    "concept": "ba1be747-081c-5880-84b8-c5fbbf1c24e4"
+                  }
+                },
+                {
+                  "label": "Start date",
+                  "type": "obs",
+                  "id": "pastMedicationStartDate",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "5ccbf262-b720-5de1-a65d-ae215520f7f7",
+                    "allowFutureDates": "false"
+                  }
+                },
+                {
+                  "label": "Still taking?",
+                  "type": "obs",
+                  "id": "pastMedicationOngoing",
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "concept": "a2722200-81b8-5d21-8933-569df72cfff7",
+                    "answers": [
+                      {
+                        "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Yes"
+                      },
+                      {
+                        "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "No"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "End date",
+                  "type": "obs",
+                  "id": "pastMedicationEndDate",
+                  "questionOptions": {
+                    "rendering": "date",
+                    "concept": "db292b01-465a-5284-8f14-04ee549d3728",
+                    "allowFutureDates": "false"
+                  },
+                  "hide": {
+                    "hideWhenExpression": "pastMedicationOngoing === '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                  },
+                  "validators": [
+                    {
+                      "type": "js_expression",
+                      "failsWhenExpression": "!isEmpty(pastMedicationEndDate) && !isEmpty(pastMedicationStartDate) && isDateBefore(pastMedicationEndDate, pastMedicationStartDate)",
+                      "message": "End date cannot be before the start date"
+                    }
+                  ]
+                },
+                {
+                  "label": "Reason / comments",
+                  "type": "obs",
+                  "id": "pastMedicationNotes",
+                  "questionOptions": {
+                    "rendering": "textarea",
+                    "concept": "ce9e0bdc-966a-5f9e-a765-c1b9c44f189c",
+                    "rows": 2
+                  }
+                }
+              ]
+            },
+            {
+              "label": "No past medication",
+              "type": "obs",
+              "id": "noPastMedication",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "4261639e-bc17-536a-a9e8-38827c5f3326",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No past medication"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Menstrual History",
+          "isExpanded": "true",
+          "hide": {
+            "hideWhenExpression": "sex !== 'F' || age < 10"
+          },
+          "questions": [
             {
               "label": "Last menstrual period",
               "type": "obs",

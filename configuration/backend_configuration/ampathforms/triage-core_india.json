@@ -137,6 +137,13 @@
                   "intent": "*",
                   "readonly": "true"
                 }
+              ],
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(myValue) && (myValue > 100 || myValue <= 0)",
+                  "message": "BMI out of range (allowed above 0 and up to 100). Check the height and weight, and their units."
+                }
               ]
             }
           ]
@@ -153,7 +160,7 @@
                 "rendering": "number",
                 "concept": "5242AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "min": "0",
-                "max": "100",
+                "max": "99",
                 "disallowDecimals": true
               }
             },
