@@ -53,7 +53,7 @@
     }
   ],
   "processor": "EncounterFormProcessor",
-  "encounter": "Transfer Request",
+  "encounter": "Admission Request",
   "referencedForms": [],
   "description": "Create an admission request to an inpatient ward",
   "version": "1.0.0",

@@ -1,0 +1,4 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Description:en,Data class,Data type,Answers,Members,_version:1,_order:1110
+e963b591-7eb3-5f74-88bc-6cbadafb5216,,,Discharged against medical advice (DAMA/LAMA),DAMA,Inpatient left against medical advice after signing the DAMA/LAMA declaration,Misc,N/A,,,,
+402d11c5-d338-5996-a8c3-53633109015d,,,Absconded from ward,Absconded,Inpatient left the ward without informing staff,Misc,N/A,,,,
+dbee47f6-ab6e-5c24-a10d-390886c2cab9,,,Referred out to another facility,Referred out,Inpatient referred and sent to another health facility,Misc,N/A,,,,

@@ -2,3 +2,8 @@ Uuid,Void/Retire,Name,Description,View privilege,Edit privilege,_order:1000
 6176e168-7aff-5958-9c56-3fb277b37a3a,,Consultation Not Completed,"Patient not available or consultation cancelled, with reason",,,
 2aee98e7-37c4-5444-940a-cbeeb0551a83,,Medico-Legal Case,Medico-legal case documentation and police intimation,,,
 bb4ee937-d38f-52f2-837a-2588af392e60,,Medical Certificate,Medical certificate issued to the patient,,,
+06d562f8-2cdd-516f-a184-292134587645,,Admission Request,Request from OPD or Emergency to admit the patient to a ward,,,
+65999312-46eb-51f7-804e-de36125a296c,,Admission Details,"Admission details recorded on the ward (treating team, admission type and source, MLC, consent)",,,
+eb466ee0-ffe9-50a2-a7d1-8c8bf217b901,,Change of Treating Team,Responsibility for an inpatient passed to another doctor or unit,,,
+a558a469-7d0f-539d-b593-5d95c0d313ed,,Nursing Handover,Nursing handover when an inpatient moves ward,,,
+a6e25e4a-dafd-56f1-9ebf-81d50f20db6c,,Discharge Advice,Doctor's discharge advice with the exit outcome and discharge summary narrative,,,

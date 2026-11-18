@@ -1,0 +1,458 @@
+{
+  "name": "Discharge Advice",
+  "pages": [
+    {
+      "label": "Discharge Advice",
+      "sections": [
+        {
+          "label": "Outcome",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "id": "dispositionConstruct",
+              "label": "",
+              "questionOptions": {
+                "rendering": "group",
+                "concept": "9ceedfb7-60e4-42ce-a11e-f2dbabc82112"
+              },
+              "questions": [
+                {
+                  "label": "Outcome",
+                  "type": "obs",
+                  "id": "outcome",
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "concept": "ce085d74-323c-4c9a-9fdf-051de81dd020",
+                    "answers": [
+                      {
+                        "concept": "2537896a-7d27-4c71-8e93-4c265ffa5954",
+                        "label": "Discharged"
+                      },
+                      {
+                        "concept": "e963b591-7eb3-5f74-88bc-6cbadafb5216",
+                        "label": "DAMA / LAMA"
+                      },
+                      {
+                        "concept": "402d11c5-d338-5996-a8c3-53633109015d",
+                        "label": "Absconded"
+                      },
+                      {
+                        "concept": "dbee47f6-ab6e-5c24-a10d-390886c2cab9",
+                        "label": "Referred out"
+                      },
+                      {
+                        "concept": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                        "label": "Death"
+                      }
+                    ]
+                  },
+                  "required": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Discharge summary narrative",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Course in hospital",
+              "type": "obs",
+              "id": "courseInHospital",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "21dc6596-35d7-5efb-84fc-1112c2ed8bd3",
+                "rows": 5
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(outcome)"
+              }
+            },
+            {
+              "label": "Condition at discharge",
+              "type": "obs",
+              "id": "conditionAtDischarge",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "50cbc775-f6de-51c6-80a2-1436ae02b442",
+                "answers": [
+                  {
+                    "concept": "838db61c-c53b-55ca-b2be-6575bf7bccbc",
+                    "label": "Improved"
+                  },
+                  {
+                    "concept": "11d542f5-37b2-57e8-bdf5-3610899bbc8d",
+                    "label": "Stable"
+                  },
+                  {
+                    "concept": "c06afadc-74ae-5a9f-b7a4-886dd1c66c17",
+                    "label": "Unchanged"
+                  },
+                  {
+                    "concept": "844a70e8-eda5-5eb6-b1bf-83ae7dde4b8b",
+                    "label": "Deteriorated"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== '2537896a-7d27-4c71-8e93-4c265ffa5954' && outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216' && outcome !== 'dbee47f6-ab6e-5c24-a10d-390886c2cab9'"
+              }
+            },
+            {
+              "label": "Advice on discharge",
+              "type": "obs",
+              "id": "adviceOnDischarge",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "f19e8753-2494-5c49-9b94-593a08fbae0d",
+                "rows": 3
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== '2537896a-7d27-4c71-8e93-4c265ffa5954' && outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216' && outcome !== 'dbee47f6-ab6e-5c24-a10d-390886c2cab9'"
+              }
+            },
+            {
+              "label": "Follow-up",
+              "type": "obs",
+              "id": "followUp",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "81c940db-81c2-55cb-99a5-05c3d74dedca",
+                "rows": 2
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== '2537896a-7d27-4c71-8e93-4c265ffa5954' && outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216' && outcome !== 'dbee47f6-ab6e-5c24-a10d-390886c2cab9'"
+              }
+            },
+            {
+              "id": "medsNote",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Order discharge medicines in the order basket and book the follow-up appointment in the patient's record.",
+              "hide": {
+                "hideWhenExpression": "outcome !== '2537896a-7d27-4c71-8e93-4c265ffa5954' && outcome !== 'dbee47f6-ab6e-5c24-a10d-390886c2cab9'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "DAMA / LAMA",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Risks of leaving explained",
+              "type": "obs",
+              "id": "damaRisks",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "1e98dd46-fe88-563a-9ac9-df2745dccce2",
+                "answers": [
+                  {
+                    "concept": "46acd4c5-c3db-5cc3-bf6b-fc1528bbbc9e",
+                    "label": "Risks explained to patient / attendant"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216'"
+              }
+            },
+            {
+              "label": "Reason for leaving",
+              "type": "obs",
+              "id": "damaReason",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "05dd38e9-cc1d-55f4-92bf-9b0fa6e3f941",
+                "rows": 2
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216'"
+              }
+            },
+            {
+              "label": "Witness name",
+              "type": "obs",
+              "id": "damaWitness",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "add3c0c0-9590-5696-ac67-d827f273d4cc"
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216'"
+              }
+            },
+            {
+              "label": "Declaration",
+              "type": "obs",
+              "id": "damaDeclaration",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ca2d54b2-88f3-5db9-ad77-4ceebab0d451",
+                "answers": [
+                  {
+                    "concept": "e333cdcd-bb3f-55f3-bcdc-2f0a6f1408cd",
+                    "label": "Signed"
+                  },
+                  {
+                    "concept": "85fee586-508e-5c77-97e7-d42ef5a76d27",
+                    "label": "Refused to sign (witnessed)"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216'"
+              }
+            },
+            {
+              "id": "damaNote",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Upload the signed DAMA declaration under **Attachments**.",
+              "hide": {
+                "hideWhenExpression": "outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Absconded",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date and time last seen",
+              "type": "obs",
+              "id": "lastSeen",
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "5bbfd29f-22b5-51f0-b888-aeb1c337a491"
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== '402d11c5-d338-5996-a8c3-53633109015d'"
+              }
+            },
+            {
+              "label": "Persons notified",
+              "type": "obs",
+              "id": "personsNotified",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "504db697-e764-505d-a904-515ce3e413f2",
+                "answers": [
+                  {
+                    "concept": "1ec5a27c-6e28-5883-8a22-bbcd87834112",
+                    "label": "Ward in-charge"
+                  },
+                  {
+                    "concept": "9b1234d9-bc8b-5593-bd7a-f701d3a13235",
+                    "label": "Doctor"
+                  },
+                  {
+                    "concept": "91ce4255-743c-5cd5-a693-dd70bc448d5f",
+                    "label": "Security"
+                  },
+                  {
+                    "concept": "0aeb5888-7fc2-5c87-bb07-ec02cb984b9c",
+                    "label": "Police"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== '402d11c5-d338-5996-a8c3-53633109015d'"
+              }
+            },
+            {
+              "label": "Efforts made to trace the patient",
+              "type": "obs",
+              "id": "tracingEfforts",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "3873de6a-096b-5b5a-a78d-d11014a0bbe1",
+                "rows": 2
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== '402d11c5-d338-5996-a8c3-53633109015d'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Referred out",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Receiving facility",
+              "type": "obs",
+              "id": "referralFacility",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "f1b1efb4-b9eb-5ead-b4df-6d72a764e837"
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== 'dbee47f6-ab6e-5c24-a10d-390886c2cab9'"
+              }
+            },
+            {
+              "label": "Reason for referral",
+              "type": "obs",
+              "id": "referralReason",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ea1d5b6b-2ffc-5a0b-8248-b675192047cc",
+                "rows": 2
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== 'dbee47f6-ab6e-5c24-a10d-390886c2cab9'"
+              }
+            },
+            {
+              "label": "Mode of transport",
+              "type": "obs",
+              "id": "referralTransport",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "10d46413-4a89-5645-a1a1-233287b65573",
+                "answers": [
+                  {
+                    "concept": "d4f1181d-e993-5fe5-b37c-f8811bb9a66d",
+                    "label": "Ambulance"
+                  },
+                  {
+                    "concept": "b092acf6-79be-5233-9877-2b67680974c4",
+                    "label": "Private vehicle"
+                  },
+                  {
+                    "concept": "b2e0f72f-2ed3-5648-a325-9d0eba4f09c4",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== 'dbee47f6-ab6e-5c24-a10d-390886c2cab9'"
+              }
+            },
+            {
+              "label": "Escort",
+              "type": "obs",
+              "id": "referralEscort",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "4ccc59c7-31da-51d4-857f-556f4f0e80ca"
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== 'dbee47f6-ab6e-5c24-a10d-390886c2cab9'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Death",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date and time of death",
+              "type": "obs",
+              "id": "deathDatetime",
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "627f8667-6e05-5289-8897-855e7ffca483"
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== '159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Cause of death",
+              "type": "obs",
+              "id": "causeOfDeath",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "160218AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rows": 2
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== '159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "deathNote",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Also mark the patient as deceased from the patient chart (**Actions \u2192 Mark patient deceased**).",
+              "hide": {
+                "hideWhenExpression": "outcome !== '159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Police intimation (MLC patients)",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Police informed",
+              "type": "obs",
+              "id": "policeInformed",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "235a2d23-b2dd-5695-8133-15a42d907954",
+                "answers": [
+                  {
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "No"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216' && outcome !== '402d11c5-d338-5996-a8c3-53633109015d' && outcome !== '159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Date and time informed",
+              "type": "obs",
+              "id": "policeDatetime",
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "e1afc930-5991-500b-8291-a432e9096b63"
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216' && outcome !== '402d11c5-d338-5996-a8c3-53633109015d' && outcome !== '159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA') || policeInformed !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "label": "Police station",
+              "type": "obs",
+              "id": "policeStation",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "4a0c88f2-1af6-5920-8bed-4f352fe0568f"
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== 'e963b591-7eb3-5f74-88bc-6cbadafb5216' && outcome !== '402d11c5-d338-5996-a8c3-53633109015d' && outcome !== '159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA') || policeInformed !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "processor": "EncounterFormProcessor",
+  "encounter": "Discharge Advice",
+  "referencedForms": [],
+  "description": "Doctor's discharge advice: exit outcome, outcome-specific details and the discharge summary narrative (A-02-02, A-02-03, A-02-05)",
+  "version": "1.0.0",
+  "published": true,
+  "retired": false
+}

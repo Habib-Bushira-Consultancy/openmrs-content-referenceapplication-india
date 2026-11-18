@@ -1,0 +1,68 @@
+{
+  "name": "Change of Treating Team",
+  "pages": [
+    {
+      "label": "Change of Treating Team",
+      "sections": [
+        {
+          "label": "New treating team",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "New treating doctor",
+              "type": "obs",
+              "id": "treatingDoctor",
+              "questionOptions": {
+                "rendering": "ui-select-extended",
+                "concept": "decb087f-c80e-50ee-84f8-de8b83ec7d21",
+                "datasource": {
+                  "name": "provider_datasource"
+                },
+                "isSearchable": true
+              },
+              "required": true
+            },
+            {
+              "label": "Unit / department",
+              "type": "obs",
+              "id": "department",
+              "questionOptions": {
+                "rendering": "select-concept-answers",
+                "concept": "92108c04-b835-5063-8992-c67dbb8c9ea2"
+              },
+              "required": true
+            },
+            {
+              "label": "Effective date and time",
+              "type": "obs",
+              "id": "effectiveFrom",
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "f5246123-08c7-5960-8621-eb9e57cec2e4"
+              },
+              "required": true
+            },
+            {
+              "label": "Clinical handover summary",
+              "type": "obs",
+              "id": "handoverSummary",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "152969a6-c17e-532e-8663-479c204cc2bc",
+                "rows": 5
+              },
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "processor": "EncounterFormProcessor",
+  "encounter": "Change of Treating Team",
+  "referencedForms": [],
+  "description": "Passes responsibility for the inpatient to another doctor or unit (A-02-01)",
+  "version": "1.0.0",
+  "published": true,
+  "retired": false
+}

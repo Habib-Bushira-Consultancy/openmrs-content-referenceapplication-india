@@ -22,5 +22,37 @@
     "conceptCode": "CIEL:169401",
     "actions": [],
     "additionalObs": []
+  },
+  {
+    "uuid": "53e0d555-de49-5970-a220-92321277b378",
+    "name": "disposition.dama",
+    "type": "DISCHARGE",
+    "conceptCode": "e963b591-7eb3-5f74-88bc-6cbadafb5216",
+    "actions": [],
+    "additionalObs": []
+  },
+  {
+    "uuid": "0133850e-40d6-505d-8cc8-fb6aeaf757b8",
+    "name": "disposition.absconded",
+    "type": "DISCHARGE",
+    "conceptCode": "402d11c5-d338-5996-a8c3-53633109015d",
+    "actions": [],
+    "additionalObs": []
+  },
+  {
+    "uuid": "91a0cb48-4757-5a53-ad51-748c21b2a602",
+    "name": "disposition.referredOut",
+    "type": "DISCHARGE",
+    "conceptCode": "dbee47f6-ab6e-5c24-a10d-390886c2cab9",
+    "actions": [],
+    "additionalObs": []
+  },
+  {
+    "uuid": "3ae02257-37ac-55d5-a9ed-8234bed2185d",
+    "name": "disposition.death",
+    "type": "DISCHARGE",
+    "conceptCode": "CIEL:159",
+    "actions": [],
+    "additionalObs": []
   }
 ]

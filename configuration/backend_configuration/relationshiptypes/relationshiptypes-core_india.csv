@@ -4,3 +4,4 @@ Uuid,Void/Retire,Name,Description,Weight,Preferred,A is to b,B is to a
 117ac27a-7fec-4834-8fad-d967c702c15a,,Clinician/Patient,A relationship from a care provider to the patient,,,Clinician,Patient
 8c8bbfe3-8454-41f9-a180-55f7058af9bd,,Community Health Worker/Patient,CHW to Patient relationship,,,Community Health Worker,Patient
 057de23f-3d9c-4314-9391-4452970739c6,,Other/Other,A description for a relationship type not covered here,,,Other,Other
+e97b96ec-779a-5de3-a85d-f3aadd31228a,,Mother/Child,Mother to her child (used for mother-newborn linkage on the wards),,,Mother,Child

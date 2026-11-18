@@ -1,0 +1,67 @@
+{
+  "name": "Nursing Handover",
+  "pages": [
+    {
+      "label": "Nursing Handover",
+      "sections": [
+        {
+          "label": "Handover",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Current condition",
+              "type": "obs",
+              "id": "currentCondition",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "5937f758-e0ba-535f-890a-a8464078c5ba",
+                "rows": 3
+              },
+              "required": true
+            },
+            {
+              "label": "Lines, drains and catheters",
+              "type": "obs",
+              "id": "linesDrains",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "cdc3345c-c032-5afc-b21a-fde76c5e05d3",
+                "rows": 2
+              }
+            },
+            {
+              "label": "Pending orders and medications",
+              "type": "obs",
+              "id": "pendingItems",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "15385415-8095-5739-b95c-525714c8a968",
+                "rows": 3
+              }
+            },
+            {
+              "label": "Receiving nurse",
+              "type": "obs",
+              "id": "receivingNurse",
+              "questionOptions": {
+                "rendering": "ui-select-extended",
+                "concept": "07d76706-0e14-5a3b-ac82-205c72eb9025",
+                "datasource": {
+                  "name": "provider_datasource"
+                },
+                "isSearchable": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "processor": "EncounterFormProcessor",
+  "encounter": "Nursing Handover",
+  "referencedForms": [],
+  "description": "Nursing handover when the inpatient moves to another ward (A-02-01)",
+  "version": "1.0.0",
+  "published": true,
+  "retired": false
+}

@@ -1,0 +1,204 @@
+{
+  "name": "Admission Details",
+  "pages": [
+    {
+      "label": "Admission Details",
+      "sections": [
+        {
+          "label": "Treating team",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Treating department / unit",
+              "type": "obs",
+              "id": "department",
+              "questionOptions": {
+                "rendering": "select-concept-answers",
+                "concept": "92108c04-b835-5063-8992-c67dbb8c9ea2"
+              },
+              "required": true
+            },
+            {
+              "label": "Treating doctor",
+              "type": "obs",
+              "id": "treatingDoctor",
+              "questionOptions": {
+                "rendering": "ui-select-extended",
+                "concept": "decb087f-c80e-50ee-84f8-de8b83ec7d21",
+                "datasource": {
+                  "name": "provider_datasource"
+                },
+                "isSearchable": true
+              },
+              "required": true
+            },
+            {
+              "label": "Nurse on duty",
+              "type": "obs",
+              "id": "nurseOnDuty",
+              "questionOptions": {
+                "rendering": "ui-select-extended",
+                "concept": "96837f34-ac57-5cb3-bbfc-05fd5f5e22da",
+                "datasource": {
+                  "name": "provider_datasource"
+                },
+                "isSearchable": true
+              }
+            }
+          ]
+        },
+        {
+          "label": "Admission",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Admission type",
+              "type": "obs",
+              "id": "admissionType",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "98d14af7-0cd6-5ba1-ac0f-32f310ad7ac2",
+                "answers": [
+                  {
+                    "concept": "8c08541b-0334-55bc-8049-1f71bedf8032",
+                    "label": "Elective"
+                  },
+                  {
+                    "concept": "bd30a456-2abf-5408-ab00-a0518b83cac8",
+                    "label": "Urgent"
+                  },
+                  {
+                    "concept": "dfa066de-4d80-55aa-bf12-92eb6956953a",
+                    "label": "Emergency"
+                  }
+                ]
+              },
+              "required": true
+            },
+            {
+              "label": "Admission source",
+              "type": "obs",
+              "id": "admissionSource",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cbe7264b-726a-5834-8b4b-5aaec6b55140",
+                "answers": [
+                  {
+                    "concept": "bb8a656d-2980-582f-bc56-0a721bcdde46",
+                    "label": "OPD advice"
+                  },
+                  {
+                    "concept": "3cb0f554-c571-567d-bc73-f670f98e454e",
+                    "label": "Direct (including emergency)"
+                  },
+                  {
+                    "concept": "17c6f7e7-4bd9-50c7-9e7f-4c07dbc9d250",
+                    "label": "Transfer-in from another facility"
+                  }
+                ]
+              },
+              "required": true
+            },
+            {
+              "label": "Referring facility",
+              "type": "obs",
+              "id": "referringFacility",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "743be4a4-a7d7-5837-8ffd-190ca0b03eec"
+              },
+              "hide": {
+                "hideWhenExpression": "admissionSource !== '17c6f7e7-4bd9-50c7-9e7f-4c07dbc9d250'"
+              }
+            },
+            {
+              "label": "Reason for admission",
+              "type": "obs",
+              "id": "reasonForAdmission",
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ff8fa65b-fa98-5f39-8859-3b0064d63457",
+                "rows": 3
+              },
+              "required": true
+            },
+            {
+              "label": "Medico-legal case",
+              "type": "obs",
+              "id": "mlc",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "f2444224-6cbb-5698-b4f8-9402bf1e843f",
+                "answers": [
+                  {
+                    "concept": "d78dc552-f468-5ce3-9c3a-94a01884c15f",
+                    "label": "This is an MLC"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Bed priority (only if admitted without a bed)",
+              "type": "obs",
+              "id": "bedPriority",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "095dc30d-2fe3-5e69-a904-e6dd0d24683d",
+                "answers": [
+                  {
+                    "concept": "4104cbe6-84b7-5e83-88d7-a39e47cb6704",
+                    "label": "Immediate"
+                  },
+                  {
+                    "concept": "20816ca2-e5f6-5d3b-a48c-5c12306a25ff",
+                    "label": "High"
+                  },
+                  {
+                    "concept": "3635e6b5-f4ca-514e-8f2f-2d45fcb76b05",
+                    "label": "Routine"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Consent",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Admission consent",
+              "type": "obs",
+              "id": "consent",
+              "questionOptions": {
+                "rendering": "checkbox",
+                "concept": "9ae1eddb-e58b-5a7d-a5a9-4d422c9bd748",
+                "answers": [
+                  {
+                    "concept": "8eddb4e3-46e0-541c-87dc-a06c7f99ce79",
+                    "label": "Consent taken: Yes"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "consentNote",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Upload the signed consent form (scan or photo) under **Attachments** in the patient's record."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "processor": "EncounterFormProcessor",
+  "encounter": "Admission Details",
+  "referencedForms": [],
+  "description": "Ward admission details: treating team, admission type and source, reason, MLC, bed priority and consent (A-01-01, A-01-03)",
+  "version": "1.0.0",
+  "published": true,
+  "retired": false
+}
